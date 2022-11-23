@@ -1392,3 +1392,237 @@ Action:
 
 Consider defining a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' in your configuration.
 
+2022-11-23 18:21:33 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.lkj.exam.demo4.service.ArticleService required a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' in your configuration.
+
+2022-11-23 18:23:41 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.lkj.exam.demo4.service.ArticleService required a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' in your configuration.
+
+2022-11-23 18:23:56 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.lkj.exam.demo4.service.ArticleService required a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' in your configuration.
+
+2022-11-23 18:24:24 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.lkj.exam.demo4.service.ArticleService required a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' in your configuration.
+
+2022-11-23 18:25:16 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.lkj.exam.demo4.service.ArticleService required a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' in your configuration.
+
+2022-11-23 18:25:22 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.lkj.exam.demo4.service.ArticleService required a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' in your configuration.
+
+2022-11-23 18:25:39 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.lkj.exam.demo4.service.ArticleService required a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' in your configuration.
+
+2022-11-23 18:26:02 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.lkj.exam.demo4.service.ArticleService required a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' in your configuration.
+
+2022-11-23 18:27:04 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.lkj.exam.demo4.service.ArticleService required a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' in your configuration.
+
+2022-11-23 18:28:01 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.lkj.exam.demo4.service.ArticleService required a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' in your configuration.
+
+2022-11-23 18:28:07 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.lkj.exam.demo4.service.ArticleService required a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' in your configuration.
+
+2022-11-23 18:28:30 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.lkj.exam.demo4.service.ArticleService required a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' in your configuration.
+
+2022-11-23 18:28:36 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.lkj.exam.demo4.service.ArticleService required a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.repository.ArticleRepository' in your configuration.
+

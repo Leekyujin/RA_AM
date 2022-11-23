@@ -1,6 +1,5 @@
 package com.lkj.exam.demo4.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +26,9 @@ public class ArticleService {
 		return articleRepository.getArticles();
 	}
 	
-	public Article writeArticle(String title, String body) {
-		return articleRepository.writeArticle(title, body);
+	public int writeArticle(String title, String body) {
+		articleRepository.writeArticle(title, body);
+		return articleRepository.getLastInsertId();
 	}
 
 	public void deleteArticle(int id) {
