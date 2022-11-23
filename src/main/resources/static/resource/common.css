@@ -1,0 +1,58 @@
+@font-face {
+    font-family: 'Y_Spotlight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/Y_Spotlight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html>body, html>body .toast-ui-editor, html>body .toastui-editor-contents, html>body .ProseMirror, html>body .toastui-editor-md-mode  {
+	font-family: 'Y_Spotlight';
+}
+
+/* 라이브러리 */
+.table-box-type-1 > table {
+	width: 100%;
+}
+
+.table-box-type-1 > table th, .table-box-type-1 > table td {
+	border: 1px solid lightseagreen;
+	padding: 10px;
+	text-align: center;
+}
+
+.btn-text-link {
+	color: gray;
+}
+
+html[data-theme="dark"] :is(.table-box-type-1>table th, .table-box-type-1>table td) {
+	border-color: white;
+}
+
+html>body .toast-ui-viewer {
+	background-color: white;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+/* 커스텀 */
+/* 테마 */
+.btn-theme-toggle > span:first-child {
+  display:none;
+}
+
+html[data-theme="dark"] .btn-theme-toggle > span:first-child {
+  display:inline;
+}
+
+html[data-theme="dark"] .btn-theme-toggle > span:last-child {
+  display:none;
+}
+
+body {
+	min-width: 800px;
+}
+
+img {
+	width: 218px;
+	height: 80px;
+}
