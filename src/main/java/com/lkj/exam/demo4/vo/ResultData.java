@@ -1,7 +1,9 @@
 package com.lkj.exam.demo4.vo;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 public class ResultData<DT> {
 	
 	@Getter
@@ -12,10 +14,6 @@ public class ResultData<DT> {
 	private String data1Name;
 	@Getter
 	private DT data1;
-
-	private ResultData() {
-
-	}
 	
 	public static <DT> ResultData<DT> from(String resultCode, String msg) {
 		return from(resultCode, msg, null, null);
