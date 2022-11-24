@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -51,13 +52,14 @@ public class UsrArticleController {
 		return ResultData.newData(writeArticleRd, "article", article);
 	}
 
-	@RequestMapping("/usr/article/getArticles")
-	@ResponseBody
-	public ResultData<List<Article>> getArticles() {
+	@RequestMapping("/usr/article/list")
+	public String showList(Model model) {
 		
 		List<Article> articles = articleService.getArticles();
 
-		return ResultData.from("S-1", "Article List", "articles", articles);
+		model.addAttribute("articles", articles);
+
+		return "usr/article/list";
 	}
 	
 	@RequestMapping("/usr/article/doDelete")
@@ -122,16 +124,17 @@ public class UsrArticleController {
 		return articleService.modifyArticle(id, title, body);
 	}
 	
-	@RequestMapping("/usr/article/getArticle")
-	@ResponseBody
-	public ResultData<Article> getArticle(int id) {
+	@RequestMapping("/usr/article/detail")
+	public String showDetail(Model model, int id) {
 		Article article = articleService.getArticle(id);
+		
+		model.addAttribute("article", article);
 
 		if (article == null) {
-			return ResultData.from("F-1", Ut.f("%d번 게시물은 존재하지 않습니다.", id));
+			return id + "번 게시물은 존재하지 않습니다.";
 		}
 
-		return ResultData.from("S-1", Ut.f("%d번 게시물입니다.", id), "article", article);
+		return "usr/article/detail";
 	}
 	
 }
