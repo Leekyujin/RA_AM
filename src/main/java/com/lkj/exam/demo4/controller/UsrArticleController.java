@@ -130,10 +130,6 @@ public class UsrArticleController {
 		
 		model.addAttribute("article", article);
 
-		if (article == null) {
-			return id + "번 게시물은 존재하지 않습니다.";
-		}
-
 		return "usr/article/detail";
 	}
 	
