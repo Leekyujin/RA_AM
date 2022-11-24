@@ -19,7 +19,7 @@
 		ORDER BY A.id DESC
 	</select>
 
-	<select id="getArticle" resultType="Article">
+	<select id="getForPrintArticle" resultType="Article">
 		SELECT A.*, M.nickname AS extra__writerName
 		FROM article AS A
 		INNER JOIN `member` AS M

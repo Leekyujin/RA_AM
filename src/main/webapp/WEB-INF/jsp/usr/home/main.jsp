@@ -5,7 +5,14 @@
 
 <section>
 	<div class="container mx-auto">
-		<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae veritatis necessitatibus tenetur nostrum voluptatem vitae quis eius labore doloribus. Autem facilis beatae corporis quam labore qui asperiores nesciunt cumque! Nemo.</div>
+		<div align="center">
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/A66XfEU_ASo"
+			 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+			  clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>
+		<div class="mt-2" align="center">
+			<a class="btn btn-outline btn-success" href="https://lostark.inven.co.kr/" target="_blank">로스트아크 인벤 바로가기</a>
+		</div>
 	</div>
 </section>
 
