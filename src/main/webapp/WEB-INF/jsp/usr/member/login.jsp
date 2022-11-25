@@ -14,7 +14,8 @@
 				<tbody>
 					<tr>
 						<th>아이디</th>
-						<td><input class="w-96 input input-bordered input-info w-full max-w-xs" name="loginId" type="text" placeholder="아이디를 입력해주세요." /></td>
+						<td><input class="w-96 input input-bordered input-info w-full max-w-xs" name="loginId"
+							 type="text" placeholder="아이디를 입력해주세요." autocomplete="off" /></td>
 					</tr>
 					<tr>
 						<th>비밀번호</th>

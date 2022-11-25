@@ -9,7 +9,7 @@ import com.lkj.exam.demo4.vo.Article;
 @Mapper
 public interface ArticleRepository {
 
-	public Article writeArticle(int memberId, String title, String body);
+	public void writeArticle(int memberId, String title, String body);
 	
 	public List<Article> getArticles();
 

@@ -19,14 +19,15 @@
 				<tr>
 					<th>제목</th>
 					<td>
-						<input class="w-full input input-bordered input-info w-full max-w-xs" autocomplete="off" type="text" name="title"
-						 placeholder="제목을 입력해주세요." value="${article.title}" />
+						<input class="w-full input input-bordered input-info max-w-xs" autocomplete="off" type="text" name="title"
+						 	placeholder="제목을 입력해주세요." autocomplete="off" value="${article.title}" />
 					</td>
 				</tr>
 				<tr>
 					<th>내용</th>
 					<td>
-						<textarea class="w-full input input-bordered input-info w-full max-w-xs" name="body" placeholder="내용을 입력해주세요." >${article.body }</textarea>
+						<textarea class="w-full textarea textarea-info" name="body"
+							 placeholder="내용을 입력해주세요." autocomplete="off">${article.body }</textarea>
 					</td>
 				</tr>
 				<tr>

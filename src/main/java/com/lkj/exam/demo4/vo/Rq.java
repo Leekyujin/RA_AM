@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.lkj.exam.demo4.service.MemberService;
 import com.lkj.exam.demo4.util.Ut;
 
 import lombok.Getter;
@@ -15,25 +16,27 @@ public class Rq {
 	private boolean isLogined;
 	@Getter
 	private int loginedMemberId;
+	@Getter
+	private Member loginedMember;
 	
 	private HttpServletRequest req;
 	private HttpServletResponse resp;
 	private HttpSession session;
 
-	public Rq(HttpServletRequest req, HttpServletResponse resp) {
+	public Rq(HttpServletRequest req, HttpServletResponse resp, MemberService memberService) {
 		
 		this.req = req;
 		this.resp = resp;
 		this.session = req.getSession();
 		
-		HttpSession httpSession = req.getSession();
-		
 		boolean isLogined = false;
 		int loginedMemberId = 0;
+		Member loginedMember = null;
 
 		if (session.getAttribute("loginedMemberId") != null) {
 			isLogined = true;
 			loginedMemberId = (int) session.getAttribute("loginedMemberId");
+			loginedMember = memberService.getMemberById(loginedMemberId);
 		}
 
 		this.isLogined = isLogined;
@@ -76,6 +79,14 @@ public class Rq {
 	public void logout() {
 		
 		session.removeAttribute("loginedMemberId");
+	}
+	
+	public String jsHistoryBack(String msg) {
+		return Ut.jsHistoryBack(msg);
+	}
+
+	public String jsReplace(String msg, String uri) {
+		return Ut.jsReplace(msg, uri);
 	}
 	
 }
