@@ -30,7 +30,6 @@ public interface ArticleRepository {
 			<if test="boardId != 0">
 				AND A.boardId = #{boardId}
 			</if>
-			ORDER BY id DESC;
 			</script>
 			""")
 	public int getArticlesCount(int boardId);

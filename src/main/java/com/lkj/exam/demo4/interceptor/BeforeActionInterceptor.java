@@ -14,13 +14,12 @@ import com.lkj.exam.demo4.vo.Rq;
 public class BeforeActionInterceptor implements HandlerInterceptor{
 	
 	@Autowired
-	private MemberService memberService;
+	private Rq rq;
 	
 	@Override
 	public boolean preHandle(HttpServletRequest req, HttpServletResponse resp, Object handler) throws Exception {
 		
-		Rq rq = new Rq(req, resp, memberService);
-		req.setAttribute("rq", rq);
+		rq.initOnBeforeActionInterceptor();
 		
 		return HandlerInterceptor.super.preHandle(req, resp, handler);
 	}

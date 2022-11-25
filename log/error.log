@@ -1723,3 +1723,327 @@ Caused by: java.lang.ClassNotFoundException: BoardRepository
 	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:145)
 	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520)
 	... 41 common frames omitted
+2022-11-25 17:52:46 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field rq in com.lkj.exam.demo4.controller.UsrArticleController required a bean of type 'com.lkj.exam.demo4.vo.Rq' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.vo.Rq' in your configuration.
+
+2022-11-25 17:52:55 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field rq in com.lkj.exam.demo4.controller.UsrArticleController required a bean of type 'com.lkj.exam.demo4.vo.Rq' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.vo.Rq' in your configuration.
+
+2022-11-25 17:53:36 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field rq in com.lkj.exam.demo4.controller.UsrArticleController required a bean of type 'com.lkj.exam.demo4.vo.Rq' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.vo.Rq' in your configuration.
+
+2022-11-25 17:53:59 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field rq in com.lkj.exam.demo4.controller.UsrArticleController required a bean of type 'com.lkj.exam.demo4.vo.Rq' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.vo.Rq' in your configuration.
+
+2022-11-25 17:54:09 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field rq in com.lkj.exam.demo4.controller.UsrArticleController required a bean of type 'com.lkj.exam.demo4.vo.Rq' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.vo.Rq' in your configuration.
+
+2022-11-25 17:54:18 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field rq in com.lkj.exam.demo4.controller.UsrArticleController required a bean of type 'com.lkj.exam.demo4.vo.Rq' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.vo.Rq' in your configuration.
+
+2022-11-25 17:54:24 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field rq in com.lkj.exam.demo4.controller.UsrArticleController required a bean of type 'com.lkj.exam.demo4.vo.Rq' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.vo.Rq' in your configuration.
+
+2022-11-25 17:54:30 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field rq in com.lkj.exam.demo4.controller.UsrArticleController required a bean of type 'com.lkj.exam.demo4.vo.Rq' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.vo.Rq' in your configuration.
+
+2022-11-25 17:54:35 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field rq in com.lkj.exam.demo4.controller.UsrArticleController required a bean of type 'com.lkj.exam.demo4.vo.Rq' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.vo.Rq' in your configuration.
+
+2022-11-25 17:54:59 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field rq in com.lkj.exam.demo4.controller.UsrArticleController required a bean of type 'com.lkj.exam.demo4.vo.Rq' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.vo.Rq' in your configuration.
+
+2022-11-25 17:55:18 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field rq in com.lkj.exam.demo4.controller.UsrArticleController required a bean of type 'com.lkj.exam.demo4.vo.Rq' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.vo.Rq' in your configuration.
+
+2022-11-25 17:55:31 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field rq in com.lkj.exam.demo4.controller.UsrArticleController required a bean of type 'com.lkj.exam.demo4.vo.Rq' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.vo.Rq' in your configuration.
+
+2022-11-25 18:03:27 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field rq in com.lkj.exam.demo4.controller.UsrArticleController required a bean of type 'com.lkj.exam.demo4.vo.Rq' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.vo.Rq' in your configuration.
+
+2022-11-25 18:03:45 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field rq in com.lkj.exam.demo4.interceptor.BeforeActionInterceptor required a bean of type 'com.lkj.exam.demo4.vo.Rq' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.vo.Rq' in your configuration.
+
+2022-11-25 18:04:06 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field rq in com.lkj.exam.demo4.interceptor.BeforeActionInterceptor required a bean of type 'com.lkj.exam.demo4.vo.Rq' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.vo.Rq' in your configuration.
+
+2022-11-25 18:04:09 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field rq in com.lkj.exam.demo4.interceptor.BeforeActionInterceptor required a bean of type 'com.lkj.exam.demo4.vo.Rq' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.vo.Rq' in your configuration.
+
+2022-11-25 18:04:18 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field rq in com.lkj.exam.demo4.interceptor.BeforeActionInterceptor required a bean of type 'com.lkj.exam.demo4.vo.Rq' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.vo.Rq' in your configuration.
+
+2022-11-25 18:04:43 [ERROR] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field rq in com.lkj.exam.demo4.interceptor.BeforeActionInterceptor required a bean of type 'com.lkj.exam.demo4.vo.Rq' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.lkj.exam.demo4.vo.Rq' in your configuration.
+
