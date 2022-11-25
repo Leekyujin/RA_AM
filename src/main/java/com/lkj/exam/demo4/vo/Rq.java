@@ -18,42 +18,44 @@ public class Rq {
 	
 	private HttpServletRequest req;
 	private HttpServletResponse resp;
+	private HttpSession session;
 
 	public Rq(HttpServletRequest req, HttpServletResponse resp) {
 		
 		this.req = req;
 		this.resp = resp;
+		this.session = req.getSession();
 		
 		HttpSession httpSession = req.getSession();
 		
 		boolean isLogined = false;
 		int loginedMemberId = 0;
 
-		if (httpSession.getAttribute("loginedMemberId") != null) {
+		if (session.getAttribute("loginedMemberId") != null) {
 			isLogined = true;
-			loginedMemberId = (int) httpSession.getAttribute("loginedMemberId");
+			loginedMemberId = (int) session.getAttribute("loginedMemberId");
 		}
 
 		this.isLogined = isLogined;
 		this.loginedMemberId = loginedMemberId;
 	}
 	
-	public void printHistoryBackJs(String msg) throws IOException {
-
+	public void printHistoryBackJs(String msg) throws IOException{
+		
 		resp.setContentType("text/html; charset=UTF-8");
 
-		println("<script>");
+		print(Ut.jsHistoryBack(msg));
+	}
+	
+	public String jsHistoryBackOnView(String msg) {
+		req.setAttribute("msg", msg);
+		req.setAttribute("historyBack", true);
 
-		if (!Ut.empty(msg)) {
-			println("alert('"+msg+"');");
-		}
-
-		println("history.back();");
-		println("</script>");
-
+		return "usr/common/js";
 	}
 
 	public void print(String str) throws IOException {
+		
 		try {
 			resp.getWriter().append(str);
 		} catch (IOException e) {
@@ -62,7 +64,18 @@ public class Rq {
 	}
 
 	public void println(String str) throws IOException {
+		
 		print(str + "\n");
+	}
+	
+	public void login(Member member) {
+		
+		session.setAttribute("loginedMemberId", member.getId());
+	}
+
+	public void logout() {
+		
+		session.removeAttribute("loginedMemberId");
 	}
 	
 }

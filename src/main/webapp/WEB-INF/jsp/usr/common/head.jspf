@@ -101,14 +101,14 @@ Theme__init();
 				</c:if>
 				<c:if test="${!rq.logined }">
 					<li class="hover:text-red-600">
-						<a class="h-full px-3 flex items-center" href="${rq.loginUri }">
+						<a class="h-full px-3 flex items-center" href="/usr/member/login">
 							<span>로그인</span>
 						</a>
 					</li>
 				</c:if>
 				<c:if test="${!rq.logined }">
 					<li class="hover:text-red-600">
-						<a class="h-full px-3 flex items-center" href="${rq.joinUri }">
+						<a class="h-full px-3 flex items-center" href="#">
 							<span>회원가입</span>
 						</a>
 					</li>
@@ -129,7 +129,7 @@ Theme__init();
 				</c:if>
 				<c:if test="${rq.logined }">
 					<li class="hover:text-red-600">
-						<a class="h-full px-3 flex items-center" href="${rq.logoutUri }">
+						<a class="h-full px-3 flex items-center" href="/usr/member/doLogout">
 							<span>로그아웃</span>
 						</a>
 					</li>
