@@ -40,9 +40,12 @@ public class ArticleService {
 		article.setExtra__actorCanModify(actorCanModifyRd.isSuccess());
 	}
 
-	public List<Article> getForPrintArticles(int actorId, int boardId) {
+	public List<Article> getForPrintArticles(int actorId, int boardId, int itemsInAPage, int page) {
 		
-		List<Article> articles =  articleRepository.getArticles(boardId);
+		int limitStart = (page - 1) * itemsInAPage;
+		int limitTake = itemsInAPage;
+
+		List<Article> articles =  articleRepository.getArticles(boardId, limitStart, limitTake);
 
 		for (Article article : articles) {
 			updateForPrintData(actorId, article);
@@ -51,9 +54,9 @@ public class ArticleService {
 		return articles;
 	}
 	
-	public ResultData<Integer> writeArticle(int memberId, String title, String body) {
+	public ResultData<Integer> writeArticle(int memberId, int boardId, String title, String body) {
 		
-		articleRepository.writeArticle(memberId, title, body);
+		articleRepository.writeArticle(memberId, boardId, title, body);
 		
 		int id = articleRepository.getLastInsertId();
 

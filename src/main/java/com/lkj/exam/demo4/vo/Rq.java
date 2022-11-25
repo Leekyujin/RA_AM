@@ -35,9 +35,9 @@ public class Rq {
 		this.resp = resp;
 		this.session = req.getSession();
 		
-		boolean isLogined = false;
-		int loginedMemberId = 0;
-		Member loginedMember = null;
+		isLogined = false;
+		loginedMemberId = 0;
+		loginedMember = null;
 
 		if (session.getAttribute("loginedMemberId") != null) {
 			isLogined = true;
