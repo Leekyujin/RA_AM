@@ -5,7 +5,8 @@
 
 <section class="mt-8">
 	<div class="container mx-auto px-3">
-		<div class="table-box-type-1">
+		<div>게시물 : ${articlesCount }개</div>
+		<div class="table-box-type-1 mt-1">
 			<table>
 				<colgroup>
 					<col width="80"/>

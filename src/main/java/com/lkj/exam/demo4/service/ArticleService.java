@@ -40,8 +40,9 @@ public class ArticleService {
 		article.setExtra__actorCanModify(actorCanModifyRd.isSuccess());
 	}
 
-	public List<Article> getForPrintFreeArticles(int actorId) {
-		List<Article> articles =  articleRepository.getArticles();
+	public List<Article> getForPrintArticles(int actorId, int boardId) {
+		
+		List<Article> articles =  articleRepository.getArticles(boardId);
 
 		for (Article article : articles) {
 			updateForPrintData(actorId, article);
@@ -91,6 +92,10 @@ public class ArticleService {
 		}
 
 		return ResultData.from("S-1", "삭제 가능");
+	}
+	
+	public int getArticlesCount(int boardId) {
+		return articleRepository.getArticlesCount(boardId);
 	}
 	
 }

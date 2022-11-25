@@ -59,14 +59,21 @@ public class UsrArticleController {
 	@RequestMapping("/usr/article/list")
 	public String showList(HttpServletRequest req, Model model, int boardId) {
 		
+		Rq rq = (Rq) req.getAttribute("rq");
+		
 		Board board = boardService.getBoardById(boardId);
 		
-		Rq rq = (Rq) req.getAttribute("rq");
-
-		List<Article> articles = articleService.getForPrintFreeArticles(rq.getLoginedMemberId());
+		if (board == null) {
+			return rq.jsHistoryBackOnView("존재하지 않는 게시판입니다.");
+		}
+		
+		int articlesCount = articleService.getArticlesCount(boardId);
+		
+		List<Article> articles = articleService.getForPrintArticles(rq.getLoginedMemberId(), boardId);
 
 		model.addAttribute("board", board);
 		model.addAttribute("articles", articles);
+		model.addAttribute("articlesCount", articlesCount);
 
 		return "usr/article/list";
 	}
@@ -100,7 +107,7 @@ public class UsrArticleController {
 		Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
 
 		if (article == null) {
-			return rq.jsHistoryBackOnView(Ut.f("%d번 게시물은 존재하지 않습니다.", "id")) ;
+			return rq.jsHistoryBackOnView(Ut.f("%d번 게시물은 존재하지 않습니다.", id));
 		}
 
 		ResultData actorCanModifyRd = articleService.actorCanModify(rq.getLoginedMemberId(), article);
@@ -123,7 +130,7 @@ public class UsrArticleController {
 		Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
 
 		if (article == null) {
-			return rq.jsHistoryBack(Ut.f("%d번 게시물은 존재하지 않습니다.", "id"));
+			return rq.jsHistoryBack(Ut.f("%d번 게시물은 존재하지 않습니다.", id));
 		}
 		
 		ResultData actorCanModifyRd = articleService.actorCanModify(rq.getLoginedMemberId(), article);
