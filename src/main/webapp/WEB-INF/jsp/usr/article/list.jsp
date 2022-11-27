@@ -3,8 +3,8 @@
 <c:set var="pageTitle" value="${board.name } 게시판"/>
 <%@ include file="../common/head.jspf" %>
 
-<section class="mt-8">
-	<div class="container mx-auto px-3">
+<section class="mt-12">
+	<div class="container-md main mx-auto px-3">
 		<div class="flex">
 			<div class="text-xl">게시물 갯수 : <span class="badge">${articlesCount }개</span></div>
 			<div class="flex-grow"></div>
@@ -29,16 +29,18 @@
 			<table>
 				<colgroup>
 					<col width="80"/>
-					<col width="140"/>
 					<col />
-					<col width="140"/>
+					<col width="120"/>
+					<col width="160"/>
+					<col width="80"/>
 				</colgroup>
 				<thead>
 					<tr>
 						<th>번호</th>
-						<th>날짜</th>
 						<th>제목</th>
 						<th>작성자</th>
+						<th>날짜</th>
+						<th>조회수</th>
 					</tr>
 				</thead>
 
@@ -46,9 +48,10 @@
 					<c:forEach var="article" items="${articles }">
 					<tr>
 						<td>${article.id}</td>
-						<td>${article.updateDate.substring(2,16)}</td>
 						<td><a class="hover:text-red-600" href="../article/detail?id=${article.id}">${article.title}</a></td>
 						<td>${article.extra__writerName}</td>
+						<td>${article.updateDate.substring(2,16)}</td>
+						<td>${article.hitCount }</td>
 					</tr>
 					</c:forEach>
 				</tbody>

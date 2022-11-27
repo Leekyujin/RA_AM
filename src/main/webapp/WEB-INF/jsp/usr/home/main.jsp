@@ -4,7 +4,7 @@
 <%@ include file="../common/head.jspf" %>
 
 <section>
-	<div class="container mx-auto">
+	<div class="container-md main mx-auto mt-14">
 		<div align="center">
 			<iframe width="560" height="315" src="https://www.youtube.com/embed/A66XfEU_ASo"
 			 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;

@@ -49,4 +49,6 @@ public interface ArticleRepository {
 			</script>
 			""")
 	public int getArticlesCount(int boardId, String searchKeywordTypeCode, String searchKeyword);
+	
+	public int increaseHitCount(int id);
 }

@@ -2,8 +2,10 @@ package com.lkj.exam.demo4.vo;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @NoArgsConstructor
+@ToString
 public class ResultData<DT> {
 	
 	@Getter

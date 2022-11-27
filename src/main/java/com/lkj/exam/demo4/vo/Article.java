@@ -17,6 +17,7 @@ public class Article {
 	private String searchKeywordTypeCode;
 	private String searchKeyword;
 	private String hit;
+	private String hitCount;
 	
 	private String extra__writerName;
 	private boolean extra__actorCanDelete;

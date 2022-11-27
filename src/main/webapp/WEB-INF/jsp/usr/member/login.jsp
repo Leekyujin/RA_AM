@@ -3,8 +3,8 @@
 <c:set var="pageTitle" value="로그인" />
 <%@ include file="../common/head.jspf"%>
 
-<section class="mt-8 text-xl">
-	<div class="container mx-auto px-3">
+<section class="mt-14 text-xl">
+	<div class="container-md main mx-auto px-3">
 		<form class="table-box-type-1" method="POST" action="../member/doLogin">
 			<table>
 				<colgroup>
@@ -28,11 +28,12 @@
 				</tbody>
 			</table>
 		</form>
+		<div class="btns mt-2">
+			<button class="btn btn-outline btn-success float-right" type="button" onclick="history.back();">뒤로가기</button>
+		</div>
 	</div>
 
-	<div class="container mx-auto px-3 btns mt-2">
-		<button class="btn btn-outline btn-success float-right" type="button" onclick="history.back();">뒤로가기</button>
-	</div>
+	
 </section>
 
 <%@ include file="../common/foot.jspf" %>

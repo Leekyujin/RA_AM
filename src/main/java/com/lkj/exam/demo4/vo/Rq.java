@@ -100,5 +100,5 @@ public class Rq {
 	public void initOnBeforeActionInterceptor() {
 
 	}
-	
+
 }

@@ -54,7 +54,7 @@ Theme__init();
 </head>
 <body>
 	<header>
-		<div class="h-20 flex container relative mx-auto text-4xl">
+		<div class="h-20 flex container mx-auto text-4xl">
 			<a href="#" class="flex items-center px-3">
 				<span>로고</span>
 			</a>
@@ -65,31 +65,6 @@ Theme__init();
 				<li>
 					<a class="h-full hover:text-red-600 px-3 flex items-center btn-theme-toggle" href="javascript:Theme__toggle();">
 						<span>🌞</span> <span>🌚</span>
-					</a>
-				</li>
-				<li class="hover:text-red-600">
-					<a class="h-full px-3 flex items-center" href="/usr/home/main">
-						<span>메인</span>
-					</a>
-				</li>
-				<li class="hover:text-red-600">
-					<a class="h-full px-3 flex items-center" href="/usr/article/list?boardId=1">
-						<span>공지사항</span>
-					</a>
-				</li>
-				<li class="hover:text-red-600">
-					<a class="h-full px-3 flex items-center" href="/usr/article/list?boardId=2">
-						<span>스토리</span>
-					</a>
-				</li>
-				<li class="hover:text-red-600">
-					<a class="h-full px-3 flex items-center" href="/usr/article/list?boardId=3">
-						<span>소식</span>
-					</a>
-				</li>
-				<li class="hover:text-red-600">
-					<a class="h-full px-3 flex items-center" href="/usr/article/list?boardId=4">
-						<span>팁과 노하우</span>
 					</a>
 				</li>
 				<c:if test="${rq.logined }">
@@ -134,7 +109,37 @@ Theme__init();
 						</a>
 					</li>
 				</c:if>
-				<li class="hover:text-red-600">
+			</ul>
+		</div>
+		<div class="h-10 flex container mx-auto text-4xl">
+			<ul class="flex-col my-2">
+				<li class="flex-grow"></li>
+				<li class="hover:text-red-600 my-4">
+					<a class="h-full px-3 flex" href="/usr/home/main">
+						<span>메인</span>
+					</a>
+				</li>
+				<li class="hover:text-red-600 my-4">
+					<a class="h-full px-3 flex" href="/usr/article/list?boardId=1">
+						<span>공지사항</span>
+					</a>
+				</li>
+				<li class="hover:text-red-600 my-4">
+					<a class="h-full px-3 flex" href="/usr/article/list?boardId=2">
+						<span>스토리</span>
+					</a>
+				</li>
+				<li class="hover:text-red-600 my-4">
+					<a class="h-full px-3 flex" href="/usr/article/list?boardId=3">
+						<span>소식</span>
+					</a>
+				</li>
+				<li class="hover:text-red-600 my-4">
+					<a class="h-full px-3 flex" href="/usr/article/list?boardId=4">
+						<span>팁과 노하우</span>
+					</a>
+				</li>
+				<li class="hover:text-red-600 my-4">
 					<a class="h-full px-3 flex items-center" href="/usr/home/APITest2">
 						<span>API</span>
 					</a>
@@ -142,8 +147,8 @@ Theme__init();
 			</ul>
 		</div>
 		
-		<section class="my-3 text-2xl page-title">
-			<div class="container mx-auto">
+		<section class="my-1 text-2xl page-title">
+			<div class="container-md main mx-auto">
 				<h1 align="center">${pageTitle }</h1>
 			</div>
 		</section>

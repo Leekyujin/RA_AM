@@ -65,6 +65,12 @@
 		</set>
 		WHERE id = #{id}
 	</update>
+	
+	<update id="increaseHitCount">
+		UPDATE article 
+		SET hitCount = hitCount + 1
+		WHERE id = #{id}
+	</update>
 
 	<select id="getLastInsertId" resultType="int">
 		SELECT LAST_INSERT_ID()

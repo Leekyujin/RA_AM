@@ -20,10 +20,6 @@ html>body, html>body .toast-ui-editor, html>body .toastui-editor-contents, html>
 	text-align: center;
 }
 
-.btn-text-link {
-	color: gray;
-}
-
 html[data-theme="dark"] :is(.table-box-type-1>table th, .table-box-type-1>table td) {
 	border-color: white;
 }
@@ -51,7 +47,12 @@ body {
 	min-width: 800px;
 }
 
-img {
-	width: 218px;
-	height: 80px;
+.container-md {
+	width: 1280px;
+	max-width: 1280px;
+}
+
+.main {
+	position: absolute;
+	left: 20%;
 }
