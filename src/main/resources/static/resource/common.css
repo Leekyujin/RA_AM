@@ -56,3 +56,15 @@ body {
 	position: absolute;
 	left: 20%;
 }
+
+.reply {
+	position: absolute;
+	top: 100%;
+	left: 20%;
+}
+
+.reply-wr {
+	position: absolute;
+	top: 65%;
+	left: 20%;
+}

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.lkj.exam.demo4.vo.Article;
 
@@ -12,7 +13,7 @@ public interface ArticleRepository {
 
 	public void writeArticle(int memberId, int boardId, String title, String body);
 	
-	public List<Article> getArticles(int boardId, String searchKeywordTypeCode, String searchKeyword, int limitStart, int limitTake);
+	public List<Article> getForPrintArticles(int boardId, String searchKeywordTypeCode, String searchKeyword, int limitStart, int limitTake);
 
 	public Article getForPrintArticle(int id);
 
@@ -51,4 +52,44 @@ public interface ArticleRepository {
 	public int getArticlesCount(int boardId, String searchKeywordTypeCode, String searchKeyword);
 	
 	public int increaseHitCount(int id);
+	
+	public int getArticleHitCount(int id);
+	
+	public int getSumReactionPointByMemberId(int memberId, int id);
+	
+	@Update("""
+			<script>
+			UPDATE article 
+			SET goodReactionPoint = goodReactionPoint + 1
+			WHERE id = #{relId }
+			</script>
+			""")
+	public int increaseGoodReactionPoint(int relId);
+
+	@Update("""
+			<script>
+			UPDATE article 
+			SET badReactionPoint = badReactionPoint + 1
+			WHERE id = #{relId }
+			</script>
+			""")
+	public int increaseBadReactionPoint(int relId);
+
+	@Update("""
+			<script>
+			UPDATE article 
+			SET goodReactionPoint = goodReactionPoint - 1
+			WHERE id = #{relId }
+			</script>
+			""")
+	public int decreaseGoodReactionPoint(int relId);
+
+	@Update("""
+			<script>
+			UPDATE article 
+			SET badReactionPoint = badReactionPoint - 1
+			WHERE id = #{relId }
+			</script>
+			""")
+	public int decreaseBadReactionPoint(int relId);
 }

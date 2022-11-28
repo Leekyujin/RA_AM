@@ -12,11 +12,11 @@
 		`body` = #{body}
 	</insert>
 
-	<select id="getArticles" resultType="Article">
+	<select id="getForPrintArticles" resultType="Article">
 		SELECT A.*, M.nickname AS extra__writerName
 		FROM article AS A
-		INNER JOIN `member` AS M
-		ON A.memberId = M.id
+		LEFT JOIN `member` AS M
+		ON A.memberId = M.id 
 		WHERE 1
 		<if test="boardId != 0">
 			AND A.boardId = #{boardId}
@@ -31,9 +31,9 @@
 				</when>
 				<otherwise>
 					AND (
-						A.title LIKE CONCAT('%', #{searchKeyword}, '%')
-						OR A.body LIKE CONCAT('%', #{searchKeyword}, '%')
-						)
+					A.title LIKE CONCAT('%', #{searchKeyword}, '%')
+					OR A.body LIKE CONCAT('%', #{searchKeyword}, '%')
+					)
 				</otherwise>
 			</choose>
 		</if>
@@ -42,13 +42,14 @@
 			LIMIT #{limitStart}, #{limitTake}
 		</if>
 	</select>
-
+	
 	<select id="getForPrintArticle" resultType="Article">
 		SELECT A.*, M.nickname AS extra__writerName
 		FROM article AS A
-		INNER JOIN `member` AS M
+		LEFT JOIN `member` AS M
 		ON A.memberId = M.id
-		WHERE A.id = #{id}
+		WHERE 1
+		AND A.id = #{id }
 	</select>
 
 	<delete id="deleteArticle">
@@ -71,6 +72,12 @@
 		SET hitCount = hitCount + 1
 		WHERE id = #{id}
 	</update>
+	
+	<select id="getArticleHitCount" resultType="int">
+		SELECT hitCount
+		FROM article
+		WHERE id = #{id}
+	</select>
 
 	<select id="getLastInsertId" resultType="int">
 		SELECT LAST_INSERT_ID()

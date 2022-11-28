@@ -3,8 +3,8 @@
 <c:set var="pageTitle" value="게시물 수정"/>
 <%@ include file="../common/head.jspf" %>
 
-<section class="mt-8">
-	<div class="container mx-auto px-3">
+<section class="mt-12">
+	<div class="container-md main mx-auto px-3">
 		<form class="table-box-type-1" method="POST" action="../article/doModify">
 		<input type="hidden" name="id" value="${article.id }"/>
 			<table>
@@ -15,6 +15,33 @@
 				<tr>
 					<th>번호</th>
 					<td>${article.id}</td>
+				</tr>
+				<tr>
+					<th>작성자</th>
+					<td>${article.extra__writerName}</td>
+				</tr>
+				<tr>
+					<th>작성날짜</th>
+					<td>${article.regDate.substring(2,16)}</td>
+				</tr>
+				<tr>
+					<th>수정날짜</th>
+					<td>${article.updateDate.substring(2,16)}</td>
+				</tr>
+				<tr>
+					<th>추천</th>
+					<td>
+						<c:if test="${actorCanMakeReaction }">
+							<button class="btn-text-link btn btn-outline btn-accent">좋아요 👍</button>
+							<span>&nbsp;</span>
+						</c:if>
+						<span class="badge badge-accent">👍 ${article.goodReactionPoint }</span>
+						<c:if test="${actorCanMakeReaction }">
+							<button class="btn-text-link btn btn-outline btn-accent ml-2">싫어요 👎</button>
+							<span>&nbsp;</span>
+						</c:if>
+						<span class="badge badge-accent">👎 ${article.badReactionPoint }</span>
+					</td>
 				</tr>
 				<tr>
 					<th>제목</th>

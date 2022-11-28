@@ -57,13 +57,6 @@ public class Rq {
 
 		print(Ut.jsHistoryBack(msg));
 	}
-	
-	public String jsHistoryBackOnView(String msg) {
-		req.setAttribute("msg", msg);
-		req.setAttribute("historyBack", true);
-
-		return "usr/common/js";
-	}
 
 	public void print(String str) throws IOException {
 		
@@ -89,12 +82,39 @@ public class Rq {
 		session.removeAttribute("loginedMemberId");
 	}
 	
+	public boolean isNotLogined() {
+		return !isLogined;
+	}
+	
+	public String jsHistoryBackOnView(String msg) {
+		req.setAttribute("msg", msg);
+		req.setAttribute("historyBack", true);
+		
+		return "usr/common/js";
+	}
+	
 	public String jsHistoryBack(String msg) {
 		return Ut.jsHistoryBack(msg);
 	}
 
 	public String jsReplace(String msg, String uri) {
 		return Ut.jsReplace(msg, uri);
+	}
+	
+	public String getCurrentUri() {
+		String currentUri = req.getRequestURI();
+		String queryString = req.getQueryString();
+
+		if(queryString != null && queryString.length() > 0) {
+			currentUri += "?" + queryString;
+		}
+
+		return currentUri;
+	}
+
+	public String getEncodedCurrentUri() {
+
+		return Ut.getUriEncoded(getCurrentUri());
 	}
 	
 	public void initOnBeforeActionInterceptor() {

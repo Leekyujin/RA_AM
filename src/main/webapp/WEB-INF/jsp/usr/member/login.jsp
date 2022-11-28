@@ -3,7 +3,7 @@
 <c:set var="pageTitle" value="로그인" />
 <%@ include file="../common/head.jspf"%>
 
-<section class="mt-14 text-xl">
+<section class="mt-12 text-xl">
 	<div class="container-md main mx-auto px-3">
 		<form class="table-box-type-1" method="POST" action="../member/doLogin">
 			<table>
