@@ -203,6 +203,8 @@
 						<col  />
 						<col width="120" />
 						<col width="120" />
+						<col width="70" />
+						<col width="150" />
 					</colgroup>
 
 					<thead>
@@ -211,6 +213,8 @@
 							<th>내용</th>
 							<th>작성자</th>
 							<th>날짜</th>
+							<th>추천</th>
+							<th>비고</th>
 						</tr>
 					</thead>
 
@@ -218,9 +222,20 @@
 						<c:forEach var="reply" items="${replies }">
 						<tr>
 							<td>${reply.id }</td>
-							<td>${reply.body }</td>
+							<td>${reply.getForPirntBody() }</td>
 							<td>${reply.extra__writerName }</td>
 							<td>${reply.forPrintType1RegDate }</td>
+							<td>${reply.goodReactionPoint }</td>
+							<td>
+								<c:if test="${reply.extra__actorCanModify }">
+									<a class="btn btn-outline btn-success" href="../reply/modify?id=${reply.id }">수정</a>
+								</c:if>
+								<c:if test="${reply.extra__actorCanDelete }">
+									<a class="btn btn-outline btn-success" 
+										onclick="if(confirm('삭제하시겠습니까?') == false) return false;" 
+										href="../reply/doDelete?id=${reply.id }">삭제</a>
+								</c:if>
+							</td>
 						</tr>
 						</c:forEach>
 					</tbody>

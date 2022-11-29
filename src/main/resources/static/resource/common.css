@@ -59,12 +59,19 @@ body {
 
 .reply {
 	position: absolute;
-	top: 100%;
+	top: 125%;
 	left: 20%;
 }
 
 .reply-wr {
 	position: absolute;
-	top: 65%;
+	top: 80%;
 	left: 20%;
 }
+
+.reply-md {
+	position: absolute;
+	top: 20%;
+	left: 20%;
+}
+	
