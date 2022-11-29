@@ -19,6 +19,9 @@ import lombok.Getter;
 @Component
 @Scope(value="request", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Rq {
+	
+	@Getter
+	private boolean isAjax;
 	@Getter
 	private boolean isLogined;
 	@Getter
@@ -54,6 +57,26 @@ public class Rq {
 		this.loginedMemberId = loginedMemberId;
 		this.loginedMember = loginedMember;
 		
+		String requestUri = req.getRequestURI();
+
+		boolean isAjax = requestUri.endsWith("Ajax");
+
+		if (isAjax == false) {
+			if (paramMap.containsKey("ajax") && paramMap.get("ajax").equals("Y")) {
+				isAjax = true;
+			}
+			else if (paramMap.containsKey("isAjax") && paramMap.get("isAjax").equals("Y")) {
+				isAjax = true;
+			}
+		}
+
+		if (isAjax == false) {
+			if (requestUri.contains("/get")) {
+				isAjax = true;
+			}
+		}
+		
+		this.isAjax = isAjax;
 	}
 	
 	public void printHistoryBackJs(String msg) throws IOException{

@@ -4,8 +4,13 @@
 <%@ include file="../common/head.jspf"%>
 <%@ include file="../common/toastUiEditorLib.jspf"%>
 
+<!-- lodash debounce -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" referrerpolicy="no-referrer"></script>
+
 <script>
 	let submitJoinFormDone = false;
+	
+	let validLoginId = "";
 	
 	function submitJoinForm(form) {
 		if (submitJoinFormDone) {
@@ -17,6 +22,12 @@
 		
 		if (form.loginId.value == 0) {
 			alert('아이디를 입력해주세요.');
+			form.loginId.focus();
+			return;
+		}
+		
+		if (form.loginId.value != validLoginId) {
+			alert('사용할 수 없는 아이디입니다.');
 			form.loginId.focus();
 			return;
 		}
@@ -79,6 +90,39 @@
 	  	
 	  	form.submit();
 	}
+	
+	function checkLoginIdDup(el) {
+		const form = $(el).closest('form').get(0);
+		
+		if (form.loginId.value.length == 0) {
+			validLoginId = '';
+			return;
+		}
+		
+		if (validLoginId == form.loginId.value) {
+			return;
+		}
+		$('.loginId-msg').html('<div class="mt-2">확인중...</div>');
+		
+		$.get('../member/getLoginIdDup', {
+			isAjax : 'Y',
+			loginId: form.loginId.value
+		}, function(data) {
+			$('.loginId-msg').html('<div class="mt-2">' + data.msg + '</div>');
+			if (data.success) {
+				validLoginId = data.data1;
+			} else {
+				validLoginId = '';
+			}
+			
+			if (data.resultCode == 'F-B') {
+				alert(data.msg);
+				location.replace('/');
+			}
+		}, 'json');
+		
+		const checkLoginIdDupDebounced = _.debounce(checkLoginIdDup, 300);
+	}
 </script>
 
 <section class="mt-12 text-xl">
@@ -95,7 +139,7 @@
 						<th>아이디</th>
 						<td>
 							<input class="w-full input input-bordered input-info w-full max-w-xs" type="text" name="loginId"
-								 placeholder="아이디를 입력해주세요." autocomplete="off" />
+								 placeholder="아이디를 입력해주세요." autocomplete="off" onkeyup="checkLoginIdDupDebounced(this);"/>
 							<div class="loginId-msg"></div>
 						</td>
 					</tr>
