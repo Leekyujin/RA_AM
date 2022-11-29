@@ -2,10 +2,46 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="게시물 작성" />
 <%@ include file="../common/head.jspf"%>
+<%@ include file="../common/toastUiEditorLib.jspf"%>
+
+<script>
+	let submitWriteFormDone = false;
+	
+	function submitWriteForm(form){
+		if(submitWriteFormDone){
+			alert('처리중입니다.');
+			return;
+		}
+		
+  		form.title.value = form.title.value.trim();
+  
+  		if(form.title.value == 0) {
+			alert('제목을 입력해주세요.');
+		  	return;
+		}
+		const editor = $(form).find('.toast-ui-editor').data('data-toast-editor');
+		const markdown = editor.getMarkdown().trim();
+	  
+		if(markdown.length == 0){
+	    	alert('내용을 입력해주세요.');
+	    	editor.focus();
+	    
+	    	return;
+	  	}
+	  	
+		form.body.value = markdown;
+		
+	  	form.submit();
+	  
+		submitWriteFormDone = true;
+	}
+</script>
 
 <section class="mt-12 text-xl">
 	<div class="container-md main mx-auto px-3">
-		<form class="table-box-type-1" method="POST" action="../article/doWrite">
+		<form onsubmit="submitWriteForm(this); return false;" class="table-box-type-1" method="POST"
+			action="../article/doWrite">
+			<input type="hidden" name="body"/>
 			<table>
 				<colgroup>
 					<col width="200" />
@@ -31,15 +67,16 @@
 					<tr>
 						<th>제목</th>
 						<td>
-							<input class="w-full input input-bordered input-info w-full max-w-xs" name="title"
-								required="required" type="text" placeholder="제목을 입력해주세요." />
+							<input required="required" class="w-full input input-bordered input-info w-full max-w-xs" 
+								name="title" type="text" placeholder="제목을 입력해주세요." />
 						</td>
 					</tr>
 					<tr>
 						<th>내용</th>
 						<td>
-							<textarea class="w-full textarea textarea-info" name="body"
-								required="required" placeholder="내용을 입력해주세요."></textarea>
+							<div class="toast-ui-editor">
+		    					<script type="text/x-template"></script>
+		  					</div>
 						</td>
 					</tr>
 					<tr>
@@ -50,7 +87,8 @@
 			</table>
 		</form>
 		<div class="btns mt-2">
-			<button class="btn btn-outline btn-success float-right" type="button" onclick="history.back();">뒤로가기</button>
+			<button class="btn btn-outline btn-success float-right" type="button" 
+				onclick="history.back();">뒤로가기</button>
 		</div>
 	</div>
 

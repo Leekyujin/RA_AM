@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="게시물 수정"/>
 <%@ include file="../common/head.jspf" %>
+<%@ include file="../common/toastUiEditorLib.jspf" %>
 
 <script>
 	let ArticleModify__submitDone = false;
@@ -10,19 +11,17 @@
 			return;
 		}
 		
-		form.body.value = form.body.value.trim();
-		
-		if (form.body.value.length == 0) {
-			alert('내용을 입력해주세요');
-			form.body.focus();
-			return;
-		}
-		
-		if (form.body.value.length < 2) {
-			alert('2글자 이상 입력해주세요');
-			form.body.focus();
-			return;
-		}
+		const editor = $(form).find('.toast-ui-editor').data('data-toast-editor');
+		const markdown = editor.getMarkdown().trim();
+	  
+		if(markdown.length == 0){
+	    	alert('내용을 입력해주세요.');
+	    	editor.focus();
+	    
+	    	return;
+	  	}
+	  	
+		form.body.value = markdown;
 		
 		ArticleModify__submitDone = true;
 		form.submit();
@@ -34,6 +33,7 @@
 		<form class="table-box-type-1" method="POST" action="../article/doModify"
 			onsubmit="ArticleModify__submit(this); return false;">
 		<input type="hidden" name="id" value="${article.id }"/>
+		<input type="hidden" name="body" />
 			<table>
 				<colgroup>
 					<col width="200" />
@@ -80,9 +80,10 @@
 				<tr>
 					<th>내용</th>
 					<td>
-						<textarea class="w-full textarea textarea-info" name="body"
-							 placeholder="내용을 입력해주세요." autocomplete="off">${article.body }</textarea>
-					</td>
+						<div class="toast-ui-editor">
+      						<script type="text/x-template">${article.body}</script>
+    					</div>
+    				</td>
 				</tr>
 				<tr>
 					<th></th>

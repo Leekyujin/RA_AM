@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="${article.id }번 게시물 상세보기"/>
 <%@ include file="../common/head.jspf" %>
+<%@ include file="../common/toastUiEditorLib.jspf" %>
 
 <script>
 	const params = {};
@@ -68,7 +69,11 @@
 				</tr>
 				<tr>
 					<th>내용</th>
-					<td>${article.getForPirntBody() }</td>
+					<td>
+						<div class="toast-ui-viewer">
+      						<script type="text/x-template">${article.body}</script>
+    					</div>
+					</td>
 				</tr>
 				<tr>
 					<th>추천</th>
@@ -157,7 +162,7 @@
 	<div class="container-md reply-wr mx-auto px-3">
 		<h2>댓글 작성</h2>
 		<c:if test="${rq.logined }">
-			<form class="table-box-type-1" method="POST" action="../reply/doWrite"
+			<form class="table-box-type-1 mt-1" method="POST" action="../reply/doWrite"
 				onsubmit="ReplyWrite__submitForm(this); return false;">
 				<input type="hidden" name="relTypeCode" value = "article"/>
 				<input type="hidden" name="relId" value = "${article.id }"/>
@@ -173,8 +178,10 @@
 						</tr>
 						<tr>
 							<th>내용</th>
-							<td><textarea class="w-full textarea textarea-info" name="body" 
-								placeholder="댓글을 입력해주세요." rows="5"></textarea></td>
+							<td>
+								<textarea class="w-full textarea textarea-info" name="body" 
+								placeholder="댓글을 입력해주세요." rows="5"></textarea>
+							</td>
 						</tr>
 						<tr>
 							<th></th>
@@ -192,11 +199,11 @@
 	</div>
 </section>
 
-<section class="mt-3">
+<section class="mt-2">
 	<div class="container-md reply mx-auto px-3">
 		<h2>댓글 목록(${repliesCount })</h2>
 		<c:if test="${rq.logined }">
-			<div class="table-box-type-1 mt-1 mb-2">
+			<div class="table-box-type-1 mt-2 mb-2">
 				<table>
 					<colgroup>
 						<col width="80" />

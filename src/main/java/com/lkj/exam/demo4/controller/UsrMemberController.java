@@ -150,14 +150,14 @@ public class UsrMemberController {
 	public String doModify(String memberModifyAuthKey, String loginPw, String name, String nickname, String cellphoneNum, String email) {
 
 		if (Ut.empty(memberModifyAuthKey)) {
-			return rq.jsHistoryBackOnView("회원 수정 인증코드가 필요합니다.");
+			return rq.jsHistoryBack("회원 수정 인증코드가 필요합니다.");
 		}
 
 		ResultData checkMemberModifyAuthKeyRd = memberService.checkMemberModifyAuthKey(rq.getLoginedMemberId(),
 				memberModifyAuthKey);
 
 		if (checkMemberModifyAuthKeyRd.isFail()) {
-			return rq.jsHistoryBackOnView(checkMemberModifyAuthKeyRd.getMsg());
+			return rq.jsHistoryBack(checkMemberModifyAuthKeyRd.getMsg());
 		}
 
 		if (Ut.empty(loginPw)) {

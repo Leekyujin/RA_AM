@@ -1,6 +1,5 @@
 package com.lkj.exam.demo4.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lkj.exam.demo4.repository.MemberRepository;
@@ -11,7 +10,6 @@ import com.lkj.exam.demo4.vo.ResultData;
 @Service
 public class MemberService {
 
-	@Autowired
 	private MemberRepository memberRepository;
 	private AttrService attrService;
 
