@@ -124,6 +124,7 @@ public class Rq {
 	public String jsHistoryBackOnView(String resultCode, String msg) {
 		req.setAttribute("msg", String.format("[%s] %s", resultCode, msg));
 		req.setAttribute("historyBack", true);
+		
 		return "usr/common/js";
 	}
 

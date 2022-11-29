@@ -1,6 +1,17 @@
 server:
   port: 8082
 spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: leekyujin821018@gmail.com
+    password: afuuwzlpcirkwaqk
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
   mvc:
     view:
       prefix: /WEB-INF/jsp/
@@ -15,6 +26,10 @@ spring:
 mybatis:
   type-aliases-package: com.lkj.exam.demo4.vo
 custom:
+  siteName: RA_AM
+  siteMainUri: http://localhost:8082
+  emailFrom: no-reply@localhost
+  emailFromName: RA_AM
   logging:
     dir: log
     level: debug

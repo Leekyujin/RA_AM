@@ -121,10 +121,10 @@
 
 		<div class="btns text-right mt-2">
 			<c:if test="${empty param.listUri }">
-				<button type="button" class="btn-text-link btn btn-outline btn-success" onclick="history.back();">뒤로가기</button>
+				<button type="button" class="btn btn-outline btn-success" onclick="history.back();">뒤로가기</button>
 			</c:if>
 			<c:if test="${not empty param.listUri }">
-				<a class="btn-text-link btn btn-outline btn-success" href="${param.listUri }">뒤로가기</a>
+				<a class="btn btn-outline btn-success" href="${param.listUri }">뒤로가기</a>
 			</c:if>
 			<c:if test="${article.extra__actorCanModify }">
 				<a class="btn btn-outline btn-success" href="../article/modify?id=${article.id }">수정</a>
@@ -200,7 +200,7 @@
 			</form>
 		</c:if>
 		<c:if test="${rq.notLogined }">
-			<a class="btn-text-link btn btn-outline btn-success" href="${rq.loginUri }">로그인</a> 후 이용해주세요.
+			<a class="btn btn-outline btn-success" href="${rq.loginUri }">로그인</a> 후 이용해주세요.
 		</c:if>
 	</div>
 </section>

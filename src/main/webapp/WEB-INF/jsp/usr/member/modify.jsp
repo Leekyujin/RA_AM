@@ -2,12 +2,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="회원정보 수정"/>
 <%@ include file="../common/head.jspf" %>
-
 <script>
 	let MemberModify__submitDone = false;
+	
 	function MemberModify__submit(form) {
 		if (MemberModify__submitDone) {
-			alert('처리중입니다');
+			alert('처리중입니다.');
 			return;
 		}
 		
@@ -62,20 +62,21 @@
 			return;
 		}
 		
-		MemberModify__submitDone = true;
 		form.submit();
+		MemberModify__submitDone = true;
 	}
 </script>
-
 <section class="mt-12">
 	<div class="container-md main mx-auto px-3">
 		<form class="table-box-type-1" method="POST" action="../member/doModify"
 			onsubmit="MemberModify__submit(this); return false;">
+
+			<input type="hidden" name="memberModifyAuthKey" value="${param.memberModifyAuthKey }" />
 			<table>
 				<colgroup>
 						<col width="200" />
 				</colgroup>
-
+				
 				<tr>
 					<th>로그인 아이디</th>
 					<td>${rq.loginedMember.loginId }</td>
@@ -136,17 +137,14 @@
 		</form>
 		
 		<div class="btns text-right mt-2">
-			<button type="button" class="btn-text-link btn btn-outline btn-success" onclick="history.back();">뒤로가기</button>
+			<button type="button" class="btn btn-outline btn-success" onclick="history.back();">뒤로가기</button>
 			<c:if test="${rq.logined }">
-				<a class="btn-text-link btn btn-outline btn-success" 
+				<a class="btn btn-outline btn-success" 
 					onclick="if(confirm('정말 탈퇴하시겠습니까?') == false) return false;" 
 					href="../member/doDelete?id=${rq.loginedMember.id }">회원 탈퇴</a>
 			</c:if>
 		</div>
-		
 	</div>
-
-
+		
 </section>
-
 <%@ include file="../common/foot.jspf" %>

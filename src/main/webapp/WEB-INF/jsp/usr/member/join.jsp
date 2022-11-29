@@ -196,7 +196,7 @@
 		</form>
 		
 		<div class="btns mt-2">
-			<button class="btn-text-link btn btn-outline btn-success float-right" type="button" 
+			<button class="btn btn-outline btn-success float-right" type="button" 
 				onclick="history.back();">뒤로가기</button>
 		</div>
 		
