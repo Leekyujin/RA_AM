@@ -3,6 +3,7 @@ package com.lkj.exam.demo4.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lkj.exam.demo4.service.MemberService;
@@ -18,40 +19,46 @@ public class UsrMemberController {
 	private MemberService memberService;
 	@Autowired
 	private Rq rq;
+	
+	@RequestMapping("usr/member/join")
+	public String showJoin() {
+
+		return "usr/member/join";
+	}
 
 	@RequestMapping("/usr/member/doJoin")
 	@ResponseBody
-	public ResultData<Member> doJoin(String loginId, String loginPw, String name, String nickname, 
-			String cellphoneNum, String email) {
-		
+	public String doJoin(String loginId, String loginPw, String name, String nickname, 
+			String cellphoneNum, String email, @RequestParam(defaultValue = "/") String afterLoginUri) {
+
 		if (Ut.empty(loginId)) {
-			return ResultData.from("F-1", "아이디를 입력해주세요.");
+			return Ut.jsHistoryBack("아이디를 입력해주세요.");
 		}
 		if (Ut.empty(loginPw)) {
-			return ResultData.from("F-2", "비밀번호를 입력해주세요.");
+			return Ut.jsHistoryBack("비밀번호를 입력해주세요.");
 		}
 		if (Ut.empty(name)) {
-			return ResultData.from("F-3", "이름을 입력해주세요.");
+			return Ut.jsHistoryBack("이름을 입력해주세요.");
 		}
 		if (Ut.empty(nickname)) {
-			return ResultData.from("F-4", "닉네임을 입력해주세요.");
+			return Ut.jsHistoryBack("닉네임을 입력해주세요.");
 		}
 		if (Ut.empty(cellphoneNum)) {
-			return ResultData.from("F-5", "전화번호를 입력해주세요.");
+			return Ut.jsHistoryBack("전화번호를 입력해주세요.");
 		}
 		if (Ut.empty(email)) {
-			return ResultData.from("F-6", "이메일을 입력해주세요.");
+			return Ut.jsHistoryBack("이메일을 입력해주세요.");
 		}
 
 		ResultData<Integer> joinRd = memberService.join(loginId, loginPw, name, nickname, cellphoneNum, email);
-		
+
 		if (joinRd.isFail()) {
-			return (ResultData) joinRd;
+			return rq.jsHistoryBackOnView(joinRd.getMsg());
 		}
 
 		Member member = memberService.getMemberById(joinRd.getData1());
 
-		return ResultData.newData(joinRd, "member", member);
+		return Ut.jsReplace(Ut.f("%s님 환영합니다.", member.getNickname()), afterLoginUri);
 	}
 	
 	@RequestMapping("usr/member/login")
@@ -62,7 +69,7 @@ public class UsrMemberController {
 	
 	@RequestMapping("usr/member/doLogin")
 	@ResponseBody
-	public String doLogin(String loginId, String loginPw) {
+	public String doLogin(String loginId, String loginPw, @RequestParam(defaultValue = "/") String afterLoginUri) {
 
 		if (Ut.empty(loginId)) {
 			return Ut.jsHistoryBack("아이디를 입력해주세요.");
@@ -83,16 +90,16 @@ public class UsrMemberController {
 		
 		rq.login(member);
 
-		return Ut.jsReplace(Ut.f("%s님 환영합니다", member.getNickname()), "/");
+		return Ut.jsReplace(Ut.f("%s님 환영합니다.", member.getNickname()), afterLoginUri);
 	}
 	
 	@RequestMapping("usr/member/doLogout")
 	@ResponseBody
-	public String doLogout() {
+	public String doLogout(@RequestParam(defaultValue = "/") String afterLogoutUri) {
 
 		rq.logout();
 
-		return Ut.jsReplace("로그아웃 되었습니다.", "/");
+		return Ut.jsReplace("로그아웃 되었습니다.", afterLogoutUri);
 	}
 	
 	@RequestMapping("/usr/member/showMyPage")

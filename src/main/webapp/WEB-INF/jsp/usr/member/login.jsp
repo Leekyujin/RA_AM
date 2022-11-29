@@ -6,6 +6,7 @@
 <section class="mt-12 text-xl">
 	<div class="container-md main mx-auto px-3">
 		<form class="table-box-type-1" method="POST" action="../member/doLogin">
+		<input type="hidden" name="afterLoginUri" value="${param.afterLoginUri }"/>
 			<table>
 				<colgroup>
 					<col width="200" />
