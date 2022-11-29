@@ -35,6 +35,7 @@
 		<form class="table-box-type-1" method="POST" action="../reply/doModify" 
 			onsubmit="ReplyModify__submit(this); return false;">
 		<input type="hidden" name="id" value="${reply.id }"/>
+		<input type="hidden" name="replaceUri" value="${param.replaceUri }"/>
 			<table>
 				<colgroup>
 					<col width="200" />
@@ -77,7 +78,9 @@
 					</tr>
 					<tr>
 						<th>내용</th>
-						<td><textarea class="w-full textarea textarea-info" name="body" placeholder="내용을 입력해주세요." >${reply.body }</textarea></td>
+						<td>
+							<textarea class="w-full textarea textarea-info" name="body" placeholder="내용을 입력해주세요." >${reply.body }</textarea>
+						</td>
 					</tr>
 					<tr>
 						<th></th>
@@ -88,7 +91,7 @@
 		</form>
 
 		<div class="btns float-right mt-1">
-			<button type="button" class="btn-text-link btn btn-outline btn-success" onclick="history.back();">뒤로가기</button>
+			<a class="btn btn-outline btn-success" href="${param.replaceUri }">뒤로가기</a>
 		</div>
 	</div>
 </section>

@@ -120,7 +120,12 @@
 		</div>
 
 		<div class="btns text-right mt-2">
-			<button type="button" class="btn btn-outline btn-success" onclick="history.back();">뒤로가기</button>
+			<c:if test="${empty param.listUri }">
+				<button type="button" class="btn-text-link btn btn-outline btn-success" onclick="history.back();">뒤로가기</button>
+			</c:if>
+			<c:if test="${not empty param.listUri }">
+				<a class="btn-text-link btn btn-outline btn-success" href="${param.listUri }">뒤로가기</a>
+			</c:if>
 			<c:if test="${article.extra__actorCanModify }">
 				<a class="btn btn-outline btn-success" href="../article/modify?id=${article.id }">수정</a>
 			</c:if>
@@ -164,8 +169,9 @@
 		<c:if test="${rq.logined }">
 			<form class="table-box-type-1 mt-1" method="POST" action="../reply/doWrite"
 				onsubmit="ReplyWrite__submitForm(this); return false;">
-				<input type="hidden" name="relTypeCode" value = "article"/>
-				<input type="hidden" name="relId" value = "${article.id }"/>
+				<input type="hidden" name="relTypeCode" value="article"/>
+				<input type="hidden" name="relId" value="${article.id }"/>
+				<input type="hidden" name="replaceUri" value="${rq.currentUri }"/>
 				<table>
 					<colgroup>
 						<col width="200" />
@@ -235,12 +241,12 @@
 							<td>${reply.goodReactionPoint }</td>
 							<td>
 								<c:if test="${reply.extra__actorCanModify }">
-									<a class="btn btn-outline btn-success" href="../reply/modify?id=${reply.id }">수정</a>
+									<a class="btn btn-outline btn-success" href="../reply/modify?id=${reply.id }&replaceUri=${rq.encodedCurrentUri }">수정</a>
 								</c:if>
 								<c:if test="${reply.extra__actorCanDelete }">
 									<a class="btn btn-outline btn-success" 
 										onclick="if(confirm('삭제하시겠습니까?') == false) return false;" 
-										href="../reply/doDelete?id=${reply.id }">삭제</a>
+										href="../reply/doDelete?id=${reply.id }&replaceUri=${rq.encodedCurrentUri }">삭제</a>
 								</c:if>
 							</td>
 						</tr>

@@ -10,11 +10,11 @@ html>body, html>body .toast-ui-editor, html>body .toastui-editor-contents, html>
 }
 
 /* 라이브러리 */
-.table-box-type-1 > table {
+.table-box-type-1>table {
 	width: 100%;
 }
 
-.table-box-type-1 > table th, .table-box-type-1 > table td {
+.table-box-type-1>table th, .table-box-type-1>table td {
 	border: 1px solid lightseagreen;
 	padding: 10px;
 	text-align: center;
@@ -31,16 +31,16 @@ html>body .toast-ui-viewer {
 
 /* 커스텀 */
 /* 테마 */
-.btn-theme-toggle > span:first-child {
-  display:none;
+.btn-theme-toggle>span:first-child {
+	display:none;
 }
 
-html[data-theme="dark"] .btn-theme-toggle > span:first-child {
-  display:inline;
+html[data-theme="dark"] .btn-theme-toggle>span:first-child {
+	display:inline;
 }
 
-html[data-theme="dark"] .btn-theme-toggle > span:last-child {
-  display:none;
+html[data-theme="dark"] .btn-theme-toggle>span:last-child {
+	display:none;
 }
 
 body {

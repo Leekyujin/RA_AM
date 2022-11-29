@@ -77,7 +77,7 @@ public class UsrReplyController {
 
 		switch (reply.getRelTypeCode()) {
 		case "article":
-			Article article = articleService.getArticle(id);
+			Article article = articleService.getArticle(reply.getRelId());
 			relDataTitle = article.getTitle();
 			break;
 		}

@@ -50,7 +50,7 @@
 					<c:forEach var="article" items="${articles }">
 					<tr>
 						<td>${article.id}</td>
-						<td><a class="hover:text-red-600" href="../article/detail?id=${article.id }">${article.title }</a></td>
+						<td><a class="hover:text-red-600" href="${rq.getArticleDetailUriFromArticleList(article) }">${article.title}</a></td>
 						<td>${article.extra__writerName }</td>
 						<td>${article.forPrintType1RegDate }</td>
 						<td>${article.hitCount }</td>
