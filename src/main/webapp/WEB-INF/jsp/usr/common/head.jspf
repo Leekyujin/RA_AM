@@ -55,7 +55,7 @@ Theme__init();
 <body>
 	<header>
 		<div class="h-20 flex container mx-auto text-4xl">
-			<a href="#" class="flex items-center px-3">
+			<a href="/usr/home/main" class="flex items-center px-3">
 				<span>로고</span>
 			</a>
 			
@@ -95,9 +95,9 @@ Theme__init();
 						</a>
 					</li>
 				</c:if>
-				<c:if test="${rq.logined }">
+				<c:if test="${rq.admin}">
 					<li class="hover:text-red-600">
-						<a class="h-full px-3 flex items-center" href="/usr/member/showAdminPage">
+						<a class="h-full px-3 flex items-center" href="/adm/member/list">
 							<span>관리자</span>
 						</a>
 					</li>
@@ -111,7 +111,7 @@ Theme__init();
 				</c:if>
 			</ul>
 		</div>
-		<div class="h-10 flex container mx-auto text-4xl">
+		<div class="h-3 flex container mx-auto text-4xl">
 			<ul class="flex-col my-2">
 				<li class="flex-grow"></li>
 				<li class="hover:text-red-600 my-4">
@@ -147,7 +147,7 @@ Theme__init();
 			</ul>
 		</div>
 		
-		<section class="my-1 text-2xl page-title">
+		<section class="text-2xl page-title">
 			<div class="container-md main mx-auto">
 				<h1 align="center">${pageTitle }</h1>
 			</div>

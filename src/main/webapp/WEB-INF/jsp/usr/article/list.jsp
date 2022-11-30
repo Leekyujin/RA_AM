@@ -21,7 +21,7 @@
 
 				<input class="input input-bordered input-info w-96 max-w-xs ml-1" type="text" name="searchKeyword" 
 					placeholder="검색어를 입력해주세요." maxlength="20" value="${param.searchKeyword }" autocomplete="off" />
-				<button class="btn-text-link btn btn-outline btn-success ml-1" type="submit">검색</button>
+				<button class="btn btn-outline btn-success ml-1" type="submit">검색</button>
 			</form>
 		</div>
 		

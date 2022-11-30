@@ -7,6 +7,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.lkj.exam.demo4.interceptor.BeforeActionInterceptor;
+import com.lkj.exam.demo4.interceptor.NeedAdminInterceptor;
 import com.lkj.exam.demo4.interceptor.NeedLoginInterceptor;
 import com.lkj.exam.demo4.interceptor.NeedLogoutInterceptor;
 
@@ -19,6 +20,8 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer{
 	NeedLoginInterceptor needLoginInterceptor;
 	@Autowired
 	NeedLogoutInterceptor needLogoutInterceptor;
+	@Autowired
+	NeedAdminInterceptor needAdminInterceptor;
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
@@ -52,6 +55,13 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer{
 		ir.addPathPatterns("/usr/member/doCheckPassword");
 		ir.addPathPatterns("/usr/member/modify");
 		ir.addPathPatterns("/usr/member/doModify");
+		ir.addPathPatterns("/adm/**");
+		ir.addPathPatterns("/adm/member/login");
+		ir.addPathPatterns("/adm/member/doLogin");
+		ir.addPathPatterns("/adm/member/findLoginId");
+		ir.addPathPatterns("/adm/member/doFindLoginId");
+		ir.addPathPatterns("/adm/member/findLoginPw");
+		ir.addPathPatterns("/adm/member/doFindLoginPw");
 
 		ir = registry.addInterceptor(needLogoutInterceptor);
 		ir.addPathPatterns("/usr/member/login");
@@ -63,6 +73,15 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer{
 		ir.addPathPatterns("/usr/member/doFindLoginId");
 		ir.addPathPatterns("/usr/member/findLoginPw");
 		ir.addPathPatterns("/usr/member/doFindLoginPw");
+		
+		ir = registry.addInterceptor(needAdminInterceptor);
+		ir.addPathPatterns("/adm/**");
+		ir.addPathPatterns("/adm/member/login");
+		ir.addPathPatterns("/adm/member/doLogin");
+		ir.addPathPatterns("/adm/member/findLoginId");
+		ir.addPathPatterns("/adm/member/doFindLoginId");
+		ir.addPathPatterns("/adm/member/findLoginPw");
+		ir.addPathPatterns("/adm/member/doFindLoginPw");
 
 	}
 }
