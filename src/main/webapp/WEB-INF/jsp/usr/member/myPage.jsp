@@ -53,6 +53,45 @@
 					href="../member/doDelete?id=${rq.loginedMember.id }">회원 탈퇴</a>
 			</c:if>
 		</div>
+		
+		<div class="table-box-type-1 mt-2">
+			<h2>스크랩 목록</h2>
+			<table class="mt-1">
+				<colgroup>
+					<col width="80"/>
+					<col />
+					<col width="120"/>
+					<col width="160"/>
+					<col width="100"/>
+				</colgroup>
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>날짜</th>
+						<th>비고</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="scrap" items="${scraps }">
+					<tr>
+						<td>${scrap.id}</td>
+						<td><a class="hover:text-red-600" href="${rq.getArticleDetailUriFromScrapList(scrap) }">${scrap.title}</a></td>
+						<td>${scrap.extra__writerName }</td>
+						<td>${scrap.forPrintType1RegDate }</td>
+						<td>
+							<c:if test="${scrap.extra__actorCanDelete }">
+								<a class="btn btn-outline btn-success" 
+									onclick="if(confirm('삭제하시겠습니까?') == false) return false;" 
+									href="../article/doCancelScrap?id=${scrap.id }&replaceUri=${rq.encodedCurrentUri }">삭제</a>
+							</c:if>
+						</td>
+					</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </section>
 

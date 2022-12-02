@@ -1,22 +1,29 @@
 package com.lkj.exam.demo4.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.lkj.exam.demo4.service.ArticleService;
 import com.lkj.exam.demo4.service.MemberService;
 import com.lkj.exam.demo4.util.Ut;
 import com.lkj.exam.demo4.vo.Member;
 import com.lkj.exam.demo4.vo.ResultData;
 import com.lkj.exam.demo4.vo.Rq;
+import com.lkj.exam.demo4.vo.Scrap;
 
 @Controller
 public class UsrMemberController {
 	
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private ArticleService articleService;
 	@Autowired
 	private Rq rq;
 	
@@ -145,8 +152,12 @@ public class UsrMemberController {
 	}
 	
 	@RequestMapping("/usr/member/showMyPage")
-	public String showMyPage() {
+	public String showMyPage(Model model) {
 
+		List<Scrap> scraps = articleService.getScraps(rq.getLoginedMemberId());
+		
+		model.addAttribute("scraps", scraps);
+		
 		return "usr/member/myPage";
 	}
 	

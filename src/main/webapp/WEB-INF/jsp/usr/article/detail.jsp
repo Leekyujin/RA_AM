@@ -33,6 +33,32 @@
 	})
 </script>
 
+<script>
+	let ReplyWrite__submitFormDone = false;
+	function ReplyWrite__submitForm(form) {
+		if (ReplyWrite__submitFormDone) {
+			return;
+		}
+		
+		form.body.value = form.body.value.trim();
+		
+		if (form.body.value.length == 0) {
+			alert('댓글을 입력해주세요');
+			form.body.focus();
+			return;
+		}
+		
+		if (form.body.value.length < 2) {
+			alert('2글자 이상 입력해주세요');
+			form.body.focus();
+			return;
+		}
+		
+		ReplyWrite__submitFormDone = true;
+		form.submit();
+	}
+</script>
+
 <section class="mt-12">
 	<div class="container-md main mx-auto px-3">
 		<div class="table-box-type-1">
@@ -126,6 +152,12 @@
 			<c:if test="${not empty param.listUri }">
 				<a class="btn btn-outline btn-success" href="${param.listUri }">뒤로가기</a>
 			</c:if>
+			<c:if test="${article.extra__actorCanScrap }">
+				<a class="btn btn-outline btn-success" href="../article/doScrap?id=${article.id }">스크랩</a>
+			</c:if>
+			<c:if test="${article.extra__actorCanScrap }">
+				<a class="btn btn-outline btn-success" href="../article/doCancelScrap?id=${article.id }">스크랩 취소</a>
+			</c:if>
 			<c:if test="${article.extra__actorCanModify }">
 				<a class="btn btn-outline btn-success" href="../article/modify?id=${article.id }">수정</a>
 			</c:if>
@@ -134,127 +166,97 @@
 					href="../article/doDelete?id=${article.id }">삭제</a>
 			</c:if>
 		</div>
-	</div>
-</section>
-
-<script>
-	let ReplyWrite__submitFormDone = false;
-	function ReplyWrite__submitForm(form) {
-		if (ReplyWrite__submitFormDone) {
-			return;
-		}
 		
-		form.body.value = form.body.value.trim();
+		<div class="mt-2">
+			<h2>댓글 작성</h2>
+			<c:if test="${rq.logined }">
+				<form class="table-box-type-1 mt-1" method="POST" action="../reply/doWrite"
+					onsubmit="ReplyWrite__submitForm(this); return false;">
+					<input type="hidden" name="relTypeCode" value="article"/>
+					<input type="hidden" name="relId" value="${article.id }"/>
+					<input type="hidden" name="replaceUri" value="${rq.currentUri }"/>
+					<table>
+						<colgroup>
+							<col width="200" />
+						</colgroup>
+	
+						<tbody>
+							<tr>
+								<th>작성자</th>
+								<td>${rq.loginedMember.nickname }</td>
+							</tr>
+							<tr>
+								<th>내용</th>
+								<td>
+									<textarea class="w-full textarea textarea-info" name="body" 
+									placeholder="댓글을 입력해주세요." rows="5"></textarea>
+								</td>
+							</tr>
+							<tr>
+								<th></th>
+								<td>
+									<button class="btn btn-outline btn-success" type="submit">댓글 작성</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</c:if>
+			<c:if test="${rq.notLogined }">
+				<a class="btn btn-outline btn-success" href="${rq.loginUri }">로그인</a> 후 이용해주세요.
+			</c:if>
+		</div>
 		
-		if (form.body.value.length == 0) {
-			alert('댓글을 입력해주세요');
-			form.body.focus();
-			return;
-		}
-		
-		if (form.body.value.length < 2) {
-			alert('2글자 이상 입력해주세요');
-			form.body.focus();
-			return;
-		}
-		
-		ReplyWrite__submitFormDone = true;
-		form.submit();
-	}
-</script>
-
-<section>
-	<div class="container-md reply-wr mx-auto px-3">
-		<h2>댓글 작성</h2>
-		<c:if test="${rq.logined }">
-			<form class="table-box-type-1 mt-1" method="POST" action="../reply/doWrite"
-				onsubmit="ReplyWrite__submitForm(this); return false;">
-				<input type="hidden" name="relTypeCode" value="article"/>
-				<input type="hidden" name="relId" value="${article.id }"/>
-				<input type="hidden" name="replaceUri" value="${rq.currentUri }"/>
-				<table>
-					<colgroup>
-						<col width="200" />
-					</colgroup>
-
-					<tbody>
-						<tr>
-							<th>작성자</th>
-							<td>${rq.loginedMember.nickname }</td>
-						</tr>
-						<tr>
-							<th>내용</th>
-							<td>
-								<textarea class="w-full textarea textarea-info" name="body" 
-								placeholder="댓글을 입력해주세요." rows="5"></textarea>
-							</td>
-						</tr>
-						<tr>
-							<th></th>
-							<td>
-								<button class="btn btn-outline btn-success" type="submit">댓글 작성</button>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</form>
-		</c:if>
-		<c:if test="${rq.notLogined }">
-			<a class="btn btn-outline btn-success" href="${rq.loginUri }">로그인</a> 후 이용해주세요.
-		</c:if>
-	</div>
-</section>
-
-<section class="mt-2">
-	<div class="container-md reply mx-auto px-3">
-		<h2>댓글 목록(${repliesCount })</h2>
-		<c:if test="${rq.logined }">
-			<div class="table-box-type-1 mt-2 mb-2">
-				<table>
-					<colgroup>
-						<col width="80" />
-						<col  />
-						<col width="120" />
-						<col width="120" />
-						<col width="70" />
-						<col width="150" />
-					</colgroup>
-
-					<thead>
-						<tr>
-							<th>번호</th>
-							<th>내용</th>
-							<th>작성자</th>
-							<th>날짜</th>
-							<th>추천</th>
-							<th>비고</th>
-						</tr>
-					</thead>
-
-					<tbody>
-						<c:forEach var="reply" items="${replies }">
-						<tr>
-							<td>${reply.id }</td>
-							<td>${reply.getForPirntBody() }</td>
-							<td>${reply.extra__writerName }</td>
-							<td>${reply.forPrintType1RegDate }</td>
-							<td>${reply.goodReactionPoint }</td>
-							<td>
-								<c:if test="${reply.extra__actorCanModify }">
-									<a class="btn btn-outline btn-success" href="../reply/modify?id=${reply.id }&replaceUri=${rq.encodedCurrentUri }">수정</a>
-								</c:if>
-								<c:if test="${reply.extra__actorCanDelete }">
-									<a class="btn btn-outline btn-success" 
-										onclick="if(confirm('삭제하시겠습니까?') == false) return false;" 
-										href="../reply/doDelete?id=${reply.id }&replaceUri=${rq.encodedCurrentUri }">삭제</a>
-								</c:if>
-							</td>
-						</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
-		</c:if>
+		<div class="mt-2">
+			<h2>댓글 목록(${repliesCount })</h2>
+			<c:if test="${rq.logined }">
+				<div class="table-box-type-1 mt-2 mb-2">
+					<table>
+						<colgroup>
+							<col width="80" />
+							<col  />
+							<col width="120" />
+							<col width="120" />
+							<col width="70" />
+							<col width="150" />
+						</colgroup>
+	
+						<thead>
+							<tr>
+								<th>번호</th>
+								<th>내용</th>
+								<th>작성자</th>
+								<th>날짜</th>
+								<th>추천</th>
+								<th>비고</th>
+							</tr>
+						</thead>
+	
+						<tbody>
+							<c:forEach var="reply" items="${replies }">
+							<tr>
+								<td>${reply.id }</td>
+								<td>${reply.getForPirntBody() }</td>
+								<td>${reply.extra__writerName }</td>
+								<td>${reply.forPrintType1RegDate }</td>
+								<td>${reply.goodReactionPoint }</td>
+								<td>
+									<c:if test="${reply.extra__actorCanModify }">
+										<a class="btn btn-outline btn-success" href="../reply/modify?id=${reply.id }&replaceUri=${rq.encodedCurrentUri }">수정</a>
+									</c:if>
+									<c:if test="${reply.extra__actorCanDelete }">
+										<a class="btn btn-outline btn-success" 
+											onclick="if(confirm('삭제하시겠습니까?') == false) return false;" 
+											href="../reply/doDelete?id=${reply.id }&replaceUri=${rq.encodedCurrentUri }">삭제</a>
+									</c:if>
+								</td>
+							</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</c:if>
+		</div>
 	</div>
 </section>
 

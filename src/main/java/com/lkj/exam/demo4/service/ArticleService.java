@@ -15,6 +15,8 @@ public class ArticleService {
 	
 	@Autowired
 	private ArticleRepository articleRepository;
+	@Autowired
+	private ScrapService scrapService;
 	
 	public ArticleService(ArticleRepository articleRepository) {
 		this.articleRepository = articleRepository;
@@ -38,6 +40,9 @@ public class ArticleService {
 		
 		ResultData actorCanModifyRd = actorCanModify(actorId, article);
 		article.setExtra__actorCanModify(actorCanModifyRd.isSuccess());
+		
+		ResultData actorCanScrapRd = scrapService.actorCanScrap(actorId, article, article.getId());
+		article.setExtra__actorCanScrap(actorCanScrapRd.isSuccess());
 	}
 
 	public List<Article> getForPrintArticles(int actorId, int boardId, String searchKeywordTypeCode,
@@ -159,5 +164,5 @@ public class ArticleService {
 	public Article getArticle(int id) {
 		return articleRepository.getArticle(id);
 	}
-	
+
 }

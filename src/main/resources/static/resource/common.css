@@ -64,13 +64,13 @@ body {
 
 .reply {
 	position: absolute;
-	top: 130%;
+	top: 100%;
 	left: 20%;
 }
 
 .reply-wr {
 	position: absolute;
-	top: 85%;
+	top: 65%;
 	left: 20%;
 }
 

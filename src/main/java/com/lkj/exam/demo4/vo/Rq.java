@@ -189,17 +189,16 @@ public class Rq {
 	public String getLogoutUri() {
 		String requestUri = req.getRequestURI();
 
-		switch(requestUri) {
-		case "/usr/article/write":
-		case "/usr/article/modify":
-		case "/usr/reply/modify":
-			return "../member/doLogout?afterLogoutUri=" + "/";
-		}
-
-		return "../member/doLogout?afterLogoutUri=" + getAfterLogoutUri();
+		return "/usr/member/doLogout?afterLogoutUri=" + getAfterLogoutUri();
 	}
 
 	public String getAfterLogoutUri() {
+		String requestUri = req.getRequestURI();
+		
+		switch (requestUri) {
+		case "/adm/member/list":
+			return Ut.getUriEncoded(Ut.getAttr(paramMap, "afterLoginUri", ""));
+		}
 
 		return getEncodedCurrentUri();
 	}
@@ -221,6 +220,10 @@ public class Rq {
 	
 	public String getArticleDetailUriFromArticleList(Article article) {
 		return "../article/detail?id=" + article.getId() + "&listUri=" + getEncodedCurrentUri();
+	}
+	
+	public String getArticleDetailUriFromScrapList(Scrap scrap) {
+		return "../article/detail?id=" + scrap.getRelId() + "&listUri=" + getEncodedCurrentUri();
 	}
 	
 	public boolean isAdmin() {

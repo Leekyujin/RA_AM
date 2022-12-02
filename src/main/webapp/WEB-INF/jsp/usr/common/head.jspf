@@ -114,34 +114,29 @@ Theme__init();
 		<div class="h-3 flex container mx-auto text-4xl">
 			<ul class="flex-col my-2">
 				<li class="flex-grow"></li>
-				<li class="hover:text-red-600 my-4">
+				<li class="hover:text-red-600 my-6">
 					<a class="h-full px-3 flex" href="/usr/home/main">
 						<span>메인</span>
 					</a>
 				</li>
-				<li class="hover:text-red-600 my-4">
+				<li class="hover:text-red-600 my-6">
 					<a class="h-full px-3 flex" href="/usr/article/list?boardId=1">
 						<span>공지사항</span>
 					</a>
 				</li>
-				<li class="hover:text-red-600 my-4">
+				<li class="hover:text-red-600 my-6">
 					<a class="h-full px-3 flex" href="/usr/article/list?boardId=2">
 						<span>스토리</span>
 					</a>
 				</li>
-				<li class="hover:text-red-600 my-4">
+				<li class="hover:text-red-600 my-6">
 					<a class="h-full px-3 flex" href="/usr/article/list?boardId=3">
 						<span>소식</span>
 					</a>
 				</li>
-				<li class="hover:text-red-600 my-4">
+				<li class="hover:text-red-600 my-6">
 					<a class="h-full px-3 flex" href="/usr/article/list?boardId=4">
 						<span>팁과 노하우</span>
-					</a>
-				</li>
-				<li class="hover:text-red-600 my-4">
-					<a class="h-full px-3 flex items-center" href="/usr/home/APITest2">
-						<span>API</span>
 					</a>
 				</li>
 			</ul>

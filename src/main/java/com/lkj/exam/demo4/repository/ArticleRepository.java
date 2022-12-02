@@ -2,11 +2,13 @@ package com.lkj.exam.demo4.repository;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.lkj.exam.demo4.vo.Article;
+import com.lkj.exam.demo4.vo.Scrap;
 
 @Mapper
 public interface ArticleRepository {
@@ -99,4 +101,42 @@ public interface ArticleRepository {
 			WHERE id = #{id }
 			""")
 	public Article getArticle(int id);
+
+	@Insert("""
+			<script>
+			INSERT INTO scrap
+			SET regDate = NOW(), 
+			updateDate = NOW(),
+			relId = #{relId },
+			memberId = #{memberId},
+			loginedMemberId = #{loginedMemberId },
+			title = #{title}, 
+			`body` = #{body},
+			scraped = 1
+			</script>
+			""")
+	public void scrapArticle(int loginedMemberId, int id, int relId, int memberId, String title, String body);
+
+	@Select("""
+			<script>
+			SELECT S.*, M.nickname AS extra__writerName
+			FROM scrap AS S
+			LEFT JOIN `member` AS M
+			ON S.memberId = M.id
+			WHERE S.relId = #{relId }
+			AND S.loginedMemberId = #{loginedMemberId }
+			</script>
+			""")
+	public Scrap getScrap(int loginedMemberId, int relId);
+
+	@Select("""
+			<script>
+			SELECT S.*, M.nickname AS extra__writerName
+			FROM scrap AS S
+			LEFT JOIN `member` AS M
+			ON S.memberId = M.id
+			WHERE S.loginedMemberId = #{memberId }
+			</script>
+			""")
+	public List<Scrap> getForPrintScraps(int memberId);
 }

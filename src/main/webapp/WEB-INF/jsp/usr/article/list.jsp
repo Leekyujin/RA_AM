@@ -60,6 +60,13 @@
 				</tbody>
 			</table>
 		</div>
+		
+		<div class="btns float-right mt-1">
+			<c:if test="${rq.isLogined() }">
+				<a class="btn-text-link btn btn-outline btn-success" href="../article/write">글 작성</a>
+			</c:if>
+		</div>
+		
 		<div class="page-menu mt-3 flex justify-center">
 			<div class="btn-group">
 				<c:set var="pageMenuLen" value="5"/>
@@ -87,11 +94,7 @@
 				</c:if>
 			</div>
 		</div>
-		<div class="btns float-right">
-			<c:if test="${rq.isLogined() }">
-				<a class="btn-text-link btn btn-outline btn-success" href="../article/write">글 작성</a>
-			</c:if>
-		</div>
+		
 	</div>
 </section>
 <%@ include file="../common/foot.jspf" %>

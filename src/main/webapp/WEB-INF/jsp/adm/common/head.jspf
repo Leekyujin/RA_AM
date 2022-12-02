@@ -68,7 +68,7 @@ Theme__init();
 				</a>
 			</div>
 			<div class="hover:text-red-600">
-				<a class="h-full px-3 flex items-center float-rignt" href="${rq.logoutUri}">
+				<a class="h-full px-3 flex items-center" href="${rq.logoutUri}">
 					<span>LOGOUT</span>
 				</a>
 			</div>
