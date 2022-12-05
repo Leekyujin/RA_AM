@@ -25,7 +25,7 @@
 			</form>
 		</div>
 		
-		<div class="table-box-type-1 mt-1">
+		<div class="table-box-type-1 mt-2">
 			<table>
 				<colgroup>
 					<col width="80"/>
@@ -61,7 +61,7 @@
 			</table>
 		</div>
 		
-		<div class="btns float-right mt-1">
+		<div class="btns float-right mt-2">
 			<c:if test="${rq.isLogined() }">
 				<a class="btn-text-link btn btn-outline btn-success" href="../article/write">글 작성</a>
 			</c:if>

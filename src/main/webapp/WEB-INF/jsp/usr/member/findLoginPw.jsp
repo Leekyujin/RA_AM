@@ -33,7 +33,7 @@
 			onsubmit="MemberFindLoginPw__submit(this) ; return false;"
 		>
 			<input type="hidden" name="afterFindLoginPwUri" value="${param.afterFindLoginPwUri}" />
-			<table>
+			<table class="text-base">
 				<colgroup>
 					<col width="200" />
 				</colgroup>

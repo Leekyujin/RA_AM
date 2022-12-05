@@ -152,10 +152,13 @@
 			<c:if test="${not empty param.listUri }">
 				<a class="btn btn-outline btn-success" href="${param.listUri }">뒤로가기</a>
 			</c:if>
-			<c:if test="${article.extra__actorCanScrap }">
+			<c:if test="${actorCanScrap }">
 				<a class="btn btn-outline btn-success" href="../article/doScrap?id=${article.id }">스크랩</a>
 			</c:if>
-			<c:if test="${article.extra__actorCanScrap }">
+			<c:if test="${actorCanCancelScrap }">
+				<a class="btn btn-success" href="../article/doScrap?id=${article.id }">스크랩</a>
+			</c:if>
+			<c:if test="${actorCanCancelScrap }">
 				<a class="btn btn-outline btn-success" href="../article/doCancelScrap?id=${article.id }">스크랩 취소</a>
 			</c:if>
 			<c:if test="${article.extra__actorCanModify }">

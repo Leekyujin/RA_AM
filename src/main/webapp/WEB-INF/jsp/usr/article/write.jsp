@@ -42,7 +42,7 @@
 		<form onsubmit="submitWriteForm(this); return false;" class="table-box-type-1" method="POST"
 			action="../article/doWrite">
 			<input type="hidden" name="body"/>
-			<table>
+			<table class="text-base">
 				<colgroup>
 					<col width="200" />
 				</colgroup>

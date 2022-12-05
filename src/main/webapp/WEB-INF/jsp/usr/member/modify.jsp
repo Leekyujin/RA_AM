@@ -72,7 +72,7 @@
 			onsubmit="MemberModify__submit(this); return false;">
 
 			<input type="hidden" name="memberModifyAuthKey" value="${param.memberModifyAuthKey }" />
-			<table>
+			<table class="text-base">
 				<colgroup>
 						<col width="200" />
 				</colgroup>

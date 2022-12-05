@@ -182,6 +182,14 @@ public class UsrArticleController {
 				model.addAttribute("actorCanCancelBadReaction", true);
 			}
 		}
+		
+		ResultData actorCanScrapRd = articleService.actorCanScrap(rq.getLoginedMemberId(), article);
+		
+		if (actorCanScrapRd.getResultCode().equals("S-2")) {
+			model.addAttribute("actorCanCancelScrap", true);
+		} else if (actorCanScrapRd.getResultCode().equals("S-1")){
+			model.addAttribute("actorCanScrap", true);
+		}
 
 		return "usr/article/detail";
 	}

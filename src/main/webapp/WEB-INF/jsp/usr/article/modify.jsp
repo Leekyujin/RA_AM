@@ -34,7 +34,7 @@
 			onsubmit="ArticleModify__submit(this); return false;">
 		<input type="hidden" name="id" value="${article.id }"/>
 		<input type="hidden" name="body" />
-			<table>
+			<table class="text-base">
 				<colgroup>
 					<col width="200" />
 				</colgroup>

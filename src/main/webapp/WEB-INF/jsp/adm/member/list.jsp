@@ -31,7 +31,7 @@
 				<button type="submit" class="btn btn-outline btn-success ml-1">검색</button>
 			</form>
 		</div>
-		<div class="table-box-type-1 mt-3">
+		<div class="table-box-type-1 mt-2">
 			<table class="table table-fixed w-full">
 				<colgroup>
 					<col width="100" />
@@ -87,28 +87,31 @@
 		</script>
 
 		<div class="float-right mt-1">
-			<button class="btn btn-error btn-delete-selected-members">선택삭제</button>
+			<button class="btn btn-outline btn-error btn-delete-selected-members">선택삭제</button>
 		</div>
 
 		<form hidden method="POST" name="do-delete-members-form" action="../member/doDeleteMembers">
 			<input type="hidden" name="ids" value="" />
+			<input type="hidden" name="replaceUri" value="${rq.currentUri}" />
 		</form>
 
 		<script>
-	  		$('.btn-delete-selected-members').click(function() {
-				const values = $('.checkbox-member-id:checked').map((index, el) => el.value).toArray();
-				if ( values.length == 0 ) {
-					alert('삭제할 회원을 선택 해주세요.');
-					return;
-	   			}
-				
-	    		if ( confirm('정말 삭제하시겠습니까?') == false ) {
-	      			return;
-	   			}
-    			document['do-delete-members-form'].ids.value = values.join(',');
-    			document['do-delete-members-form'].submit();
-	  		});
-		</script>
+    		$('.btn-delete-selected-members').click(function() {
+      			const values = $('.checkbox-member-id:checked').map((index, el) => el.value).toArray();
+      			
+      			if ( values.length == 0 ) {
+       		 		alert('삭제할 회원을 선택 해주세요.');
+       		 		return;
+     			}
+      			
+      			if ( confirm('정말 삭제하시겠습니까?') == false ) {
+        			return;
+     			}
+      			
+      			document['do-delete-members-form'].ids.value = values.join(',');
+      			document['do-delete-members-form'].submit();
+    		});
+    	</script>
 		
 		<div class="page-menu mt-3 flex justify-center">
 			<div class="btn-group">

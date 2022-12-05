@@ -2,6 +2,7 @@ package com.lkj.exam.demo4.repository;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -128,6 +129,14 @@ public interface ArticleRepository {
 			</script>
 			""")
 	public Scrap getScrap(int loginedMemberId, int relId);
+	
+	@Delete("""
+			<script>
+			DELETE FROM scrap
+			WHERE id = #{id }
+			</script>
+			""")
+	public void scrapCancel(int id);
 
 	@Select("""
 			<script>

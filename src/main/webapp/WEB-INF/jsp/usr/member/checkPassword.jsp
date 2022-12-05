@@ -7,7 +7,7 @@
 	<div class="container-md main mx-auto px-3">
 		<form class="table-box-type-1" method="POST" action="../member/doCheckPassword">
 		<input type="hidden" name="replaceUri" value="${param.replaceUri }" />
-			<table>
+			<table class="text-base">
 				<colgroup>
 					<col width="200" />
 				</colgroup>

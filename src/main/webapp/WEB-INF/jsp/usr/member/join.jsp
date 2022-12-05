@@ -129,7 +129,7 @@
 	<div class="container-md main mx-auto px-3">
 		<form onsubmit="submitJoinForm(this); return false;" class="table-box-type-1" method="POST" action="../member/doJoin">
 			<input type="hidden" name="afterLoginUri" value="${param.afterLoginUri }"/>
-			<table>
+			<table class="text-base">
 				<colgroup>
 					<col width="200" />
 				</colgroup>
