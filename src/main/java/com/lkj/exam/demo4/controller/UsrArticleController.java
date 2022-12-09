@@ -110,6 +110,7 @@ public class UsrArticleController {
 		}
 
 		articleService.deleteArticle(id);
+		articleService.deleteScrap(id);
 
 		return rq.jsReplace(Ut.f("%d번 게시물을 삭제했습니다.", id), "../article/list");
 	}

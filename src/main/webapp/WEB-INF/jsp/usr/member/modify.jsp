@@ -13,9 +13,9 @@
 		
 		form.loginPw.value = form.loginPw.value.trim();
 		
+		form.loginPwConfirm.value = form.loginPwConfirm.value.trim();
+		
 		if (form.loginPwConfirm.value.length > 0) {
-			
-			form.loginPwConfirm.value = form.loginPwConfirm.value.trim();
 			
 			if (form.loginPwConfirm.value.length == 0) {
 				alert('비밀번호 확인을 입력해주세요');
@@ -96,7 +96,7 @@
 					<th>새 비밀번호 확인</th>
 					<td>
 						<input class="w-96 input input-bordered input-info w-full max-w-xs" 
-							name="loginPwConfirm" type="password" placeholder="새 비밀번호를 입력해주세요." />
+							name="loginPwConfirm" type="password" placeholder="새 비밀번호 확인을 입력해주세요." />
 					</td>
 				</tr>
 				<tr>

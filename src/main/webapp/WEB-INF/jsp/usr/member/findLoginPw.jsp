@@ -61,7 +61,7 @@
 						<th></th>
 						<td>
 							<a href="/usr/member/login" class="btn btn-outline btn-success" type="submit">로그인</a>
-							<a href="/usr/member/findLoginPw" class="btn btn-outline btn-success" type="submit">비밀번호 찾기</a>
+							<a href="/usr/member/findLoginId" class="btn btn-outline btn-success" type="submit">아이디 찾기</a>
 						</td>
 					</tr>
 				</tbody>

@@ -31,7 +31,7 @@
 
 
 <section>
-	<div class="container-md reply-md mx-auto px-3 mt-3">
+	<div class="container-md reply-md mx-auto px-3">
 		<form class="table-box-type-1" method="POST" action="../reply/doModify" 
 			onsubmit="ReplyModify__submit(this); return false;">
 		<input type="hidden" name="id" value="${reply.id }"/>
@@ -46,7 +46,7 @@
 						<td>${reply.relId}</td>
 					</tr>
 					<tr>
-						<th>게시물 내용</th>
+						<th>게시물 제목</th>
 						<td>${relDataTitle}</td>
 					</tr>
 					<tr>

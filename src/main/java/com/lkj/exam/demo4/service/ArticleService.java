@@ -216,4 +216,8 @@ public class ArticleService {
 		return scraps;
 	}
 
+	public void deleteScrap(int relId) {
+		articleRepository.deleteScrap(relId);
+	}
+
 }

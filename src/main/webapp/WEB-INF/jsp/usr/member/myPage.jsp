@@ -55,7 +55,7 @@
 		</div>
 		
 		<div class="table-box-type-1 mt-2">
-			<h2>스크랩 목록</h2>
+			<h2>스크랩 목록(${scrapsCount })</h2>
 			<table class="mt-1">
 				<colgroup>
 					<col width="80"/>

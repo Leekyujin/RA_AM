@@ -30,17 +30,17 @@ public class UsrMemberController {
 	@RequestMapping("/usr/member/getLoginIdDup")
 	@ResponseBody
 	public ResultData getLoginIdDup(String loginId) {
-
+		
 		if (Ut.empty(loginId)) {
 			return ResultData.from("F-A1", "아이디를 입력해주세요.");
 		}
-
+		
 		Member oldMember = memberService.getMemberByLoginId(loginId);
-
+		
 		if (oldMember != null) {
 			return ResultData.from("F-A2", "해당 아이디는 이미 사용중입니다.", "loginId", loginId);
 		}
-
+		
 		return ResultData.from("S-1", "사용 가능한 아이디입니다.", "loginId", loginId);
 	}
 	
@@ -86,15 +86,15 @@ public class UsrMemberController {
 		Member member = memberService.getMemberByLoginId(loginId);
 
 		if (member == null) {
-			return Ut.jsHistoryBack("아이디를 잘못 입력했습니다");
+			return Ut.jsHistoryBack("아이디를 잘못 입력했습니다.");
 		}
 
 		if (member.getLoginPw().equals(Ut.sha256(loginPw)) == false) {
-			return Ut.jsHistoryBack("비밀번호가 일치하지 않습니다");
+			return Ut.jsHistoryBack("비밀번호가 일치하지 않습니다.");
 		}
 		
 		if (member.isDelStatus() == true) {
-			return Ut.jsReplace("사용 정지 된 계정입니다", "/");
+			return Ut.jsReplace("사용 정지된 계정입니다.", "/");
 		}
 		
 		rq.login(member);
@@ -160,7 +160,10 @@ public class UsrMemberController {
 
 		List<Scrap> scraps = articleService.getScraps(rq.getLoginedMemberId());
 		
+		int scrapsCount = scraps.size();
+		
 		model.addAttribute("scraps", scraps);
+		model.addAttribute("scrapsCount", scrapsCount);
 		
 		return "usr/member/myPage";
 	}
@@ -176,11 +179,11 @@ public class UsrMemberController {
 	public String doCheckPassword(String loginPw, String replaceUri) {
 		
 		if (Ut.empty(loginPw)) {
-			return rq.jsHistoryBack("비밀번호를 입력해주세요");
+			return rq.jsHistoryBack("비밀번호를 입력해주세요.");
 		}
 
 		if (rq.getLoginedMember().getLoginPw().equals(Ut.sha256(loginPw)) == false) {
-			return rq.jsHistoryBack("비밀번호가 일치하지 않습니다");
+			return rq.jsHistoryBack("비밀번호가 일치하지 않습니다.");
 		}
 		
 		if (replaceUri.equals("../member/modify")) {
@@ -222,11 +225,6 @@ public class UsrMemberController {
 
 		if (checkMemberModifyAuthKeyRd.isFail()) {
 			return rq.jsHistoryBack(checkMemberModifyAuthKeyRd.getMsg());
-		}
-
-		if (Ut.empty(loginPw)) {
-			loginPw = null;
-			return rq.jsHistoryBack("비밀번호를 입력해주세요.");
 		}
 
 		ResultData modifyRd = memberService.modify(rq.getLoginedMemberId(), loginPw, name, nickname, cellphoneNum, email);

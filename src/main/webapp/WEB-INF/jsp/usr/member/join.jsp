@@ -4,7 +4,6 @@
 <%@ include file="../common/head.jspf"%>
 <%@ include file="../common/toastUiEditorLib.jspf"%>
 
-<!-- lodash debounce -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" referrerpolicy="no-referrer"></script>
 
 <script>
@@ -54,41 +53,40 @@
 			return;
 		}
 		
-  		form.name.value = form.name.value.trim();
-  	  
-  		if(form.name.value == 0) {
+		form.name.value = form.name.value.trim();
+		
+		if (form.name.value == 0) {
 			alert('이름을 입력해주세요.');
 			form.name.focus();
-		  	return;
-		}
-  		
-  		form.nickname.value = form.nickname.value.trim();
-    	  
-  		if(form.nickname.value == 0) {
-			alert('닉네임을 입력해주세요.');
-			form.nickname.focus();
-		  	return;
-		}
-  		
-  		form.cellphoneNum.value = form.cellphoneNum.value.trim();
-    	  
-  		if(form.cellphoneNum.value == 0) {
-			alert('전화번호를 입력해주세요.');
-			form.cellphoneNum.focus();
-		  	return;
-		}
-  		
-  		form.email.value = form.email.value.trim();
-    	  
-  		if(form.email.value == 0) {
-			alert('이메일을 입력해주세요.');
-			form.email.focus();
-		  	return;
+			return;
 		}
 		
-	  	submitJoinFormDone = true;
-	  	
-	  	form.submit();
+		form.nickname.value = form.nickname.value.trim();
+		
+		if (form.nickname.value == 0) {
+			alert('닉네임을 입력해주세요.');
+			form.nickname.focus();
+			return;
+		}
+		
+		form.cellphoneNum.value = form.cellphoneNum.value.trim();
+		
+		if (form.cellphoneNum.value == 0) {
+			alert('전화번호를 입력해주세요.');
+			form.cellphoneNum.focus();
+			return;
+		}
+		
+		form.email.value = form.email.value.trim();
+		
+		if (form.email.value == 0) {
+			alert('이메일을 입력해주세요.');
+			form.email.focus();
+			return;
+		}
+		
+		submitJoinFormDone = true;
+		form.submit();
 	}
 	
 	function checkLoginIdDup(el) {
@@ -120,9 +118,10 @@
 				location.replace('/');
 			}
 		}, 'json');
-		
-		const checkLoginIdDupDebounced = _.debounce(checkLoginIdDup, 300);
 	}
+	
+	const checkLoginIdDupDebounced = _.debounce(checkLoginIdDup, 500);
+	
 </script>
 
 <section class="mt-12 text-xl">
@@ -139,7 +138,7 @@
 						<th>아이디</th>
 						<td>
 							<input class="w-full input input-bordered input-info w-full max-w-xs" type="text" name="loginId"
-								 placeholder="아이디를 입력해주세요." autocomplete="off" onkeyup="checkLoginIdDupDebounced(this);"/>
+								placeholder="아이디를 입력해주세요." autocomplete="off" onkeyup="checkLoginIdDupDebounced(this);"/>
 							<div class="loginId-msg"></div>
 						</td>
 					</tr>
