@@ -12,19 +12,13 @@ import com.lkj.exam.demo4.vo.Rq;
 
 @Component
 public class BeforeActionInterceptor implements HandlerInterceptor{
-	
+	// Rq 불러오기
 	@Autowired
 	private Rq rq;
 	
-	public BeforeActionInterceptor(Rq rq) {
-		this.rq = rq;
-	}
-	
 	@Override
 	public boolean preHandle(HttpServletRequest req, HttpServletResponse resp, Object handler) throws Exception {
-		
 		req.setAttribute("rq", rq);
-		
 		return HandlerInterceptor.super.preHandle(req, resp, handler);
 	}
 }

@@ -56,7 +56,7 @@ Theme__init();
 	<header>
 		<div class="h-20 flex container mx-auto text-4xl">
 			<a href="/usr/home/main" class="flex items-center px-3">
-				<span>로고</span>
+				<span>⚜ RA</span>
 			</a>
 			
 			<div class="flex-grow"></div>

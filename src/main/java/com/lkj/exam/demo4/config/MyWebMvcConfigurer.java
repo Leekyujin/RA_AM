@@ -13,27 +13,33 @@ import com.lkj.exam.demo4.interceptor.NeedLogoutInterceptor;
 
 @Configuration
 public class MyWebMvcConfigurer implements WebMvcConfigurer{
-
+	// BeforeActionInterceptor 불러오기
 	@Autowired
 	BeforeActionInterceptor beforeActionInterceptor;
+	// NeedLoginInterceptor 불러오기
 	@Autowired
 	NeedLoginInterceptor needLoginInterceptor;
+	// NeedLogoutInterceptor 불러오기
 	@Autowired
 	NeedLogoutInterceptor needLogoutInterceptor;
+	// NeedAdminInterceptor 불러오기
 	@Autowired
 	NeedAdminInterceptor needAdminInterceptor;
 
+	// 인터셉터를 적용하는 역할
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		
 		InterceptorRegistration ir;
 
+		// BeforeActionInterceptor가 모든 액션 실행 전에 실행되도록 처리
 		ir = registry.addInterceptor(beforeActionInterceptor);
 		ir.addPathPatterns("/**");
 		ir.addPathPatterns("/favicon.ico");
 		ir.excludePathPatterns("/resource/**");
 		ir.excludePathPatterns("/error");
 		
+		// 로그인 없이도 접속할 수 있는 URI 기술
 		ir = registry.addInterceptor(needLoginInterceptor);
 		ir.addPathPatterns("/usr/article/write");
 		ir.addPathPatterns("/usr/article/doWrite");
@@ -63,6 +69,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer{
 		ir.addPathPatterns("/adm/member/findLoginPw");
 		ir.addPathPatterns("/adm/member/doFindLoginPw");
 
+		// 로그인 상태에서 접속할 수 없는 URI 기술
 		ir = registry.addInterceptor(needLogoutInterceptor);
 		ir.addPathPatterns("/usr/member/login");
 		ir.addPathPatterns("/usr/member/doLogin");
@@ -74,6 +81,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer{
 		ir.addPathPatterns("/usr/member/findLoginPw");
 		ir.addPathPatterns("/usr/member/doFindLoginPw");
 		
+		// admin 로그인 상태에서 접속할 수 없는 URI 기술
 		ir = registry.addInterceptor(needAdminInterceptor);
 		ir.addPathPatterns("/adm/**");
 		ir.addPathPatterns("/adm/member/login");

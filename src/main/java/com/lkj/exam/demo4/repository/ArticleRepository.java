@@ -144,8 +144,6 @@ public interface ArticleRepository {
 			FROM scrap AS S
 			LEFT JOIN `member` AS M
 			ON S.memberId = M.id
-			LEFT JOIN article AS A
-			ON S.relId = A.id
 			WHERE S.loginedMemberId = #{memberId }
 			</script>
 			""")

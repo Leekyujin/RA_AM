@@ -28,14 +28,17 @@ public class MemberService {
 		this.mailService = mailService;
 	}
 	
+	// 회원가입
 	public ResultData<Integer> join(String loginId, String loginPw, String name, String nickname, String cellphoneNum, String email) {
 		
+		// 회원 가입이 가능한 아이디인지 확인
 		Member existsMember = getMemberByLoginId(loginId);
 
 		if (existsMember != null) {
 			return ResultData.from("F-7", Ut.f("%s은(는) 이미 사용중인 아이디입니다.", loginId));
 		}
 		
+		// 회원 가입이 가능한 이름과 이메일인지 확인
 		existsMember = getMemberByNameAndEmail(name, email);
 
 		if (existsMember != null) {
@@ -48,17 +51,20 @@ public class MemberService {
 		
 		int id = memberRepository.getLastInsertId();
 
-		return ResultData.from("S-1", "회원가입이 완료되었습니다.", "id", id);
+		return ResultData.from("S-1", "회원가입이 완료되었습니다.");
 	}
 	
+	// 이름과 이메일로 멤버 조회
 	public Member getMemberByNameAndEmail(String name, String email) {
 		return memberRepository.getMemberByNameAndEmail(name, email);
 	}
 	
+	// 로그인 아이디로 멤버 조회
 	public Member getMemberByLoginId(String loginId) {
 		return memberRepository.getMemberByLoginId(loginId);
 	}
 	
+	// 아이디로 멤버 조회
 	public Member getMemberById(int id) {
 		return memberRepository.getMemberById(id);
 	}
@@ -91,6 +97,7 @@ public class MemberService {
 		return ResultData.from("S-1", "정상 코드입니다.");
 	}
 	
+	// 비밀번호 찾기 처리_임시 비밀번호 발송
 	public ResultData notifyTempLoginPwByEmailRd(Member actor) {
 		String title = "[" + siteName + "] 임시 패스워드 발송";
 		String tempPassword = Ut.getTempPassword(6);

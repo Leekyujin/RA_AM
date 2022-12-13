@@ -27,6 +27,30 @@ public class UsrMemberController {
 	@Autowired
 	private Rq rq;
 	
+	// 회원가입 jsp 연결
+	@RequestMapping("usr/member/join")
+	public String showJoin() {
+		return "usr/member/join";
+	}
+
+	// 회원가입 처리
+	@RequestMapping("/usr/member/doJoin")
+	@ResponseBody
+	public String doJoin(String loginId, String loginPw, String name, String nickname, String cellphoneNum,
+				String email, @RequestParam(defaultValue = "/") String afterLoginUri) {
+
+		ResultData<Integer> joinRd = memberService.join(loginId, loginPw, name, nickname, cellphoneNum, email);
+
+		if (joinRd.isFail()) {
+			return rq.jsHistoryBack(joinRd.getResultCode(), joinRd.getMsg());
+		}
+
+		String afterJoinUri = "../member/login?afterLoginUri=" + Ut.getUriEncoded(afterLoginUri); 
+
+		return Ut.jsReplace("회원가입이 완료되었습니다. 로그인 후 이용해주세요.", afterJoinUri);
+	}
+	
+	// 로그인 아이디 중복 체크
 	@RequestMapping("/usr/member/getLoginIdDup")
 	@ResponseBody
 	public ResultData getLoginIdDup(String loginId) {
@@ -44,44 +68,17 @@ public class UsrMemberController {
 		return ResultData.from("S-1", "사용 가능한 아이디입니다.", "loginId", loginId);
 	}
 	
-	@RequestMapping("usr/member/join")
-	public String showJoin() {
-
-		return "usr/member/join";
-	}
-
-	@RequestMapping("/usr/member/doJoin")
-	@ResponseBody
-	public String doJoin(String loginId, String loginPw, String name, String nickname, String cellphoneNum,
-				String email, @RequestParam(defaultValue = "/") String afterLoginUri) {
-
-		ResultData<Integer> joinRd = memberService.join(loginId, loginPw, name, nickname, cellphoneNum, email);
-
-		if (joinRd.isFail()) {
-			return rq.jsHistoryBack(joinRd.getResultCode(), joinRd.getMsg());
-		}
-
-		String afterJoinUri = "../member/login?afterLoginUri=" + Ut.getUriEncoded(afterLoginUri); 
-
-		return Ut.jsReplace("회원가입이 완료되었습니다. 로그인 후 이용해주세요.", afterJoinUri);
-	}
-	
+	// 로그인 jsp 연결
 	@RequestMapping("usr/member/login")
 	public String showLogin() {
 		
 		return "usr/member/login";
 	}
 	
+	// 로그인 처리
 	@RequestMapping("usr/member/doLogin")
 	@ResponseBody
 	public String doLogin(String loginId, String loginPw, @RequestParam(defaultValue = "/") String afterLoginUri) {
-
-		if (Ut.empty(loginId)) {
-			return Ut.jsHistoryBack("아이디를 입력해주세요.");
-		}
-		if (Ut.empty(loginPw)) {
-			return Ut.jsHistoryBack("비밀번호를 입력해주세요.");
-		}
 
 		Member member = memberService.getMemberByLoginId(loginId);
 
@@ -102,14 +99,17 @@ public class UsrMemberController {
 		return Ut.jsReplace(Ut.f("%s님 환영합니다.", member.getNickname()), afterLoginUri);
 	}
 	
+	// 로그인 아이디 찾기 jsp 연결
 	@RequestMapping("usr/member/findLoginId")
 	public String showFindLoginId() {
 		return "usr/member/findLoginId";
 	}
 
+	// 로그인 아이디 찾기 처리
 	@RequestMapping("usr/member/doFindLoginId")
 	@ResponseBody
-	public String doFindLoginId(String name, String email, @RequestParam(defaultValue = "/") String afterFindLoginIdUri) {
+	public String doFindLoginId(String name, String email, @RequestParam(defaultValue = "/")
+		String afterFindLoginIdUri) {
 
 		Member member = memberService.getMemberByNameAndEmail(name, email);
 
@@ -120,12 +120,14 @@ public class UsrMemberController {
 		return Ut.jsReplace(Ut.f("회원님의 아이디는 [ %s ] 입니다.", member.getLoginId()), afterFindLoginIdUri);
 	}
 	
+	// 로그인 비밀번호 찾기 jsp 연결
 	@RequestMapping("usr/member/findLoginPw")
 	public String showFindLoginPw() {
 		
 		return "usr/member/findLoginPw";
 	}
 
+	// 로그인 비밀번호 찾기 처리
 	@RequestMapping("usr/member/doFindLoginPw")
 	@ResponseBody
 	public String doFindLoginPw(String loginId, String email,
@@ -146,6 +148,7 @@ public class UsrMemberController {
 		return Ut.jsReplace(notifyTempLoginPwByEmailRd.getMsg(), afterFindLoginPwUri);
 	}
 	
+	// 로그아웃 처리
 	@RequestMapping("usr/member/doLogout")
 	@ResponseBody
 	public String doLogout(@RequestParam(defaultValue = "/") String afterLogoutUri) {
@@ -168,12 +171,13 @@ public class UsrMemberController {
 		return "usr/member/myPage";
 	}
 	
+	// 비밀번호 확인 jsp 연결
 	@RequestMapping("usr/member/checkPassword")
 	public String showcheckPassword() {
-
 		return "usr/member/checkPassword";
 	}
 
+	// 비밀번호 확인 처리
 	@RequestMapping("usr/member/doCheckPassword")
 	@ResponseBody
 	public String doCheckPassword(String loginPw, String replaceUri) {

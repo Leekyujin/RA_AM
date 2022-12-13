@@ -96,17 +96,16 @@ public class Rq {
 	}
 
 	public void println(String str) throws IOException {
-		
 		print(str + "\n");
 	}
 	
+	// 로그인 처리
 	public void login(Member member) {
-		
 		session.setAttribute("loginedMemberId", member.getId());
 	}
 
+	// 로그아웃 처리
 	public void logout() {
-		
 		session.removeAttribute("loginedMemberId");
 	}
 	

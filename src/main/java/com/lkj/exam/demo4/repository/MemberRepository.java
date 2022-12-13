@@ -10,7 +10,8 @@ import com.lkj.exam.demo4.vo.Member;
 @Mapper
 public interface MemberRepository {
 
-	public void join(String loginId, String loginPw, String name, String nickname, String cellphoneNum, String email);
+	public void join(String loginId, String loginPw, String name, String nickname, String cellphoneNum,
+			String email);
 	
 	public int getLastInsertId();
 	
